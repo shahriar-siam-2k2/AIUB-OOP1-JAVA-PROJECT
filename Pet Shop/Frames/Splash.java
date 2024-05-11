@@ -18,13 +18,13 @@ public class Splash extends JWindow {
 		panel = new JPanel();
 		panel.setLayout(null);
 		
-		img = new ImageIcon("Images/PS-Logo.jpeg");
+		img = new ImageIcon("Images/petshoplogo.jpg");
 		imgLabel = new JLabel(img);
-		imgLabel.setBounds(0,0, 564,376);
+		imgLabel.setBounds(0,0, 450, 300);
 		panel.add(imgLabel);
 		
 		this.add(panel);
-		setSize(564,376);
+		setSize(450, 300);
 		this.setLocationRelativeTo(null);
 	}	
 }
