@@ -4,7 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-//import Classes.*;
+import Classes.*;
 
 public class adminlogin extends JFrame implements MouseListener, ActionListener{
 
@@ -33,7 +33,7 @@ public class adminlogin extends JFrame implements MouseListener, ActionListener{
 
         headFont = new Font("Segoe UI",Font.BOLD,32);
 		defFont = new Font("Segoe UI",Font.BOLD,18);
-		btnFont = new Font("Serif Bold",Font.BOLD,15);
+		btnFont = new Font("Serif Bold",Font.BOLD,16);
         fieldFont = new Font("Segoe UI",Font.PLAIN,16);
     
 
@@ -144,11 +144,30 @@ public class adminlogin extends JFrame implements MouseListener, ActionListener{
 
     public void actionPerformed(ActionEvent ae){
         if(ae.getSource() == login){
+            String t1, t2;
+            t1 = namef.getText();
+            t2 = passf.getText();
 
+            if(t1.isEmpty() == true || t2.isEmpty() == true){
+				JOptionPane.showMessageDialog(this, "Please fill out all fields.", "WARNING!", JOptionPane.WARNING_MESSAGE);
+			}
+            else{
+                AdminAccount adAcc = new AdminAccount(t1, t2);
+                if(adAcc.checkAccount() == true){
+                    JOptionPane.showMessageDialog(this, "Login Successfull, press OK", "WELCOME", JOptionPane.INFORMATION_MESSAGE);
+                    
+                    AdminPanel adpan = new AdminPanel();
+                    adpan.setVisible(true);
+                    this.setVisible(false);
+                }
+                else{
+                    
+                }
+            }
         }
         else if(ae.getSource() == back){
-            Login lg = new Login();
-            lg.setVisible(true);
+            GetStarted gs = new GetStarted();
+            gs.setVisible(true);
             this.setVisible(false);
         }
         else if(ae.getSource() == exit){

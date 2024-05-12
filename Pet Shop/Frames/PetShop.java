@@ -11,7 +11,7 @@ public class PetShop extends JFrame implements MouseListener, ActionListener {
 	JPanel panel;
 	JPanel label;
 	JLabel wlc;
-	ImageIcon logo;
+	ImageIcon logo, icon;
 	JLabel logolabel;
 	JButton exit;
 	JButton cont;
@@ -33,12 +33,15 @@ public class PetShop extends JFrame implements MouseListener, ActionListener {
 
 		headFont = new Font("Segoe UI",Font.BOLD,32);
 		defFont = new Font("Segoe UI",Font.BOLD,18);
-		btnFont = new Font("Serif Bold",Font.BOLD,15);
+		btnFont = new Font("Serif Bold",Font.BOLD,16);
 		
 		panel=new JPanel();
 		panel.setLayout(null);
 		panel.setBackground(panelCol);
 		this.add(panel);
+		
+		icon = new ImageIcon(getClass().getResource("/Images/petshoplogo.jpg"));
+		this.setIconImage(icon.getImage());
 		
 		logo=new ImageIcon("Images/petshoplogo.jpg");
 		logolabel=new JLabel(logo);
@@ -119,7 +122,7 @@ public class PetShop extends JFrame implements MouseListener, ActionListener {
 
 	public void actionPerformed(ActionEvent ae){
 		if(ae.getSource() == next){
-			Login login = new Login();
+			GetStarted login = new GetStarted();
 			login.setVisible(true);
 			this.setVisible(false);
 		}
@@ -128,9 +131,6 @@ public class PetShop extends JFrame implements MouseListener, ActionListener {
 		}
 		else if(ae.getSource() == exit){
 			this.setVisible(false);
-		}
-		else{
-
 		}
 	}
 }

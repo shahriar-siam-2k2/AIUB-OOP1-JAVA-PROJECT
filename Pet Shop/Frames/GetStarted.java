@@ -7,7 +7,7 @@ import java.awt.event.*;
 
 //import Classes.*;
 
-public class Login extends JFrame implements MouseListener, ActionListener
+public class GetStarted extends JFrame implements MouseListener, ActionListener
 {
     JLabel  Label;
 	JPanel Panel;
@@ -22,7 +22,7 @@ public class Login extends JFrame implements MouseListener, ActionListener
 	Color panelCol, btnHoverCol, btnCol, exitCol;
 	Font headFont, defFont, btnFont;
 	
-	public Login()
+	public GetStarted()
 	{
 		super("Login");
 		this.setSize(900,600);
@@ -37,7 +37,7 @@ public class Login extends JFrame implements MouseListener, ActionListener
 
 		headFont = new Font("Segoe UI",Font.BOLD,32);
 		defFont = new Font("Segoe UI",Font.BOLD,18);
-		btnFont = new Font("Serif Bold",Font.BOLD,15);
+		btnFont = new Font("Serif Bold",Font.BOLD,16);
 		
 		Panel = new JPanel();
 		Panel.setLayout(null);
