@@ -19,8 +19,8 @@ public class Login extends JFrame implements MouseListener, ActionListener
     JButton exit;
     JButton adLogin;
 	
-	Color myColor;
-	Font myFont;
+	Color panelCol, btnHoverCol, btnCol, exitCol;
+	Font headFont, defFont, btnFont;
 	
 	public Login()
 	{
@@ -28,13 +28,20 @@ public class Login extends JFrame implements MouseListener, ActionListener
 		this.setSize(900,600);
 		this.setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setResizable(false);
 
-		myColor = new Color(255,242,233);
-		myFont=new Font("Calibri",Font.BOLD,18);
+		panelCol = new Color(255,242,223);
+		btnCol = new Color(61,35,20);
+		btnHoverCol = new Color(241,146,26);
+		exitCol = new Color(217,83,79);
+
+		headFont = new Font("Segoe UI",Font.BOLD,32);
+		defFont = new Font("Segoe UI",Font.BOLD,18);
+		btnFont = new Font("Serif Bold",Font.BOLD,15);
 		
 		Panel = new JPanel();
 		Panel.setLayout(null);
-		Panel.setBackground(myColor);
+		Panel.setBackground(panelCol);
 		
 		img = new ImageIcon("Images/petshoplogo.jpg");
 		imgLabel = new JLabel(img);
@@ -43,53 +50,49 @@ public class Login extends JFrame implements MouseListener, ActionListener
 		
 		Label = new JLabel("Get Started");
 		Label.setBounds(390,325,300,30);
-		Label.setFont(new Font("Calibri", Font.BOLD, 25));
+		Label.setFont(new Font("Segoe UI", Font.BOLD, 25));
 		Panel.add(Label);
 		
 		login = new JButton("Login");
 		login.setBounds(225,375,450,30);
-		login.setForeground(myColor.WHITE);
-		myColor = new Color(241,146,26);
-		myFont = new Font("Calibri",Font.BOLD,20);
-		login.setBackground(myColor);
-		login.setFont(myFont);
+		login.setForeground(Color.WHITE);
+		login.setBackground(btnCol);
+		login.setFont(btnFont);
 		login.addActionListener(this);
+		login.addMouseListener(this);
 		login.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		login.setFocusPainted(false);
 		Panel.add(login);
 		
 		register = new JButton("Register");
 		register.setBounds(225,420,450,30);
-		register.setForeground(myColor.WHITE);
-		myColor = new Color(241,146,26);
-		myFont = new Font("Calibri",Font.BOLD,20);
-		register.setBackground(myColor);
-		register.setFont(myFont);
+		register.setForeground(Color.WHITE);
+		register.setBackground(btnCol);
+		register.setFont(btnFont);
 		register.addActionListener(this);
+		register.addMouseListener(this);
 		register.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		register.setFocusPainted(false);
 		Panel.add(register);
 		
 		adLogin = new JButton("Admin Login");
 		adLogin.setBounds(225,465,450,30);
-		adLogin.setForeground(myColor.WHITE);
-		myColor = new Color(241,146,26);
-		myFont = new Font("Calibri",Font.BOLD,18);
-		adLogin.setBackground(myColor);
-		adLogin.setFont(myFont);
+		adLogin.setForeground(Color.WHITE);
+		adLogin.setBackground(btnCol);
+		adLogin.setFont(btnFont);
 		adLogin.addActionListener(this);
+		adLogin.addMouseListener(this);
 		adLogin.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		adLogin.setFocusPainted(false);
 		Panel.add(adLogin);
 		
 		exit = new JButton("Exit");
 		exit.setBounds(225,505,450,30);
-		exit.setForeground(myColor.WHITE);
-		myColor = new Color(241,146,26);
-		myFont = new Font("Calibri",Font.BOLD,18);
-		exit.setBackground(myColor);
-		exit.setFont(myFont);
+		exit.setForeground(Color.WHITE);
+		exit.setBackground(exitCol);
+		exit.setFont(btnFont);
 		exit.addActionListener(this);
+		exit.addMouseListener(this);
 		exit.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		exit.setFocusPainted(false);
 		Panel.add(exit);
@@ -100,8 +103,43 @@ public class Login extends JFrame implements MouseListener, ActionListener
 	public void mouseClicked(MouseEvent me){}
 	public void mousePressed(MouseEvent me){}
 	public void mouseReleased(MouseEvent me){}
-	public void mouseEntered(MouseEvent me){}
-	public void mouseExited(MouseEvent me){}
+
+	public void mouseEntered(MouseEvent me){
+		if(me.getSource() == login){
+			login.setBackground(btnHoverCol);
+			login.setForeground(Color.WHITE);
+		}
+		else if(me.getSource() == register){
+			register.setBackground(btnHoverCol);
+			register.setForeground(Color.WHITE);
+		}
+		else if(me.getSource() == adLogin){
+			adLogin.setBackground(btnHoverCol);
+			adLogin.setForeground(Color.WHITE);
+		}
+		else if(me.getSource() == exit){
+			exit.setBackground(Color.WHITE);
+			exit.setForeground(new Color(217,83,79));
+		}
+	}
+	public void mouseExited(MouseEvent me){
+		if(me.getSource() == login){
+			login.setBackground(btnCol);
+			login.setForeground(Color.WHITE);
+		}
+		else if(me.getSource() == register){
+			register.setBackground(btnCol);
+			register.setForeground(Color.WHITE);
+		}
+		else if(me.getSource() == adLogin){
+			adLogin.setBackground(btnCol);
+			adLogin.setForeground(Color.WHITE);
+		}
+		else if(me.getSource() == exit){
+			exit.setBackground(exitCol);
+			exit.setForeground(Color.WHITE);
+		}
+	}
 
 	public void actionPerformed(ActionEvent ae){
 		if(ae.getSource() == login){

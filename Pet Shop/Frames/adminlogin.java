@@ -4,148 +4,155 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-// import Classes.*;
+//import Classes.*;
 
-public class adminlogin extends JFrame implements MouseListener{
+public class adminlogin extends JFrame implements MouseListener, ActionListener{
 
     JLabel adminlog,name,pass,imgLabel;
-        JTextField namef;
-        JPasswordField passf;
-        JButton exit,login,back;
-        JPanel panel;
-        Color bgc,col,col2;
-        Font mf1,mf2,mf3;
-        ImageIcon img;
-        
+    JTextField namef;
+    JPasswordField passf;
+    JButton exit,login,back;
+    JPanel panel;
+    Color panelCol,btnCol,btnHoverCol, exitCol, loginCol;
+    Font headFont, defFont, btnFont, fieldFont;
+    ImageIcon img;
 
-        
     public adminlogin()
     {
-        super("Pet Shop");
+        super("Admin Login");
         this.setSize(750,400);
         this.setLocationRelativeTo(null);
+        this.setResizable(false);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       
-        bgc=new Color(255, 242, 223);
-        col=new Color(241,146,26);
-        col2=new Color(61,35,20);
-        mf1=new Font("Arial Black",Font.BOLD,32);
-        mf2=new Font("Serif Bold",Font.BOLD,25);
-        mf3=new Font("Arial Black",Font.BOLD,14);
+        panelCol = new Color(255,242,223);
+		btnCol = new Color(61,35,20);
+		btnHoverCol = new Color(241,146,26);
+        exitCol = new Color(217,83,79);
+        loginCol = new Color(81,188,86);
+
+        headFont = new Font("Segoe UI",Font.BOLD,32);
+		defFont = new Font("Segoe UI",Font.BOLD,18);
+		btnFont = new Font("Serif Bold",Font.BOLD,15);
+        fieldFont = new Font("Segoe UI",Font.PLAIN,16);
     
 
         panel=new JPanel();
         panel.setLayout(null);
-       panel.setBackground(bgc);
+        panel.setBackground(panelCol);
         
 
-        adminlog=new JLabel("Admin Login");
-        adminlog.setBounds(240,0,350,65);
-        adminlog.setFont(mf1);
-        adminlog.setForeground(col2);
+        adminlog=new JLabel("ADMIN LOGIN");
+        adminlog.setBounds(250,0,350,65);
+        adminlog.setFont(headFont);
+        adminlog.setForeground(btnCol);
         panel.add(adminlog);
 
-        name=new JLabel("Name ");
-        name.setBounds(100,103,100,75);
-        name.setForeground(col);
-        name.setFont(mf2);
+        name=new JLabel("Name");
+        name.setBounds(100,65,100,75);
+        name.setFont(defFont);
         panel.add(name);
 
         namef=new JTextField();
-        namef.setBounds(225,120,210,33);
+        namef.setBounds(100,120,290,30);
+        namef.setFont(fieldFont);
         panel.add(namef);
 
         pass=new JLabel("Password");
-        pass.setBounds(100,160,160,55);
-        pass.setFont(mf2);
-        pass.setForeground(col);
+        pass.setBounds(100,165,160,55);
+        pass.setFont(defFont);
         panel.add(pass);
 
         passf=new JPasswordField();
-        passf.setBounds(225,170,210,30);
+        passf.setBounds(100,210,290,30);
+        passf.setFont(fieldFont);
         panel.add(passf);
 
-
-        login=new JButton("Login");
-        login.setBounds(95,300,90,35);
-        login.setFont(mf3);
-        login.setForeground(Color.BLACK);
-        login.setBackground(Color.white);
-        login.addMouseListener(this);
-        panel.add(login);
-
         exit=new JButton("Exit");
-        exit.setBounds(200,300,90,35);
-        exit.setFont(mf3);
+        exit.setBounds(100,280,90,35);
+        exit.setFont(btnFont);
         exit.setForeground(Color.BLACK);
-        exit.setBackground(Color.white);
+        exit.setBackground(Color.WHITE);
         exit.addMouseListener(this);
+        exit.addActionListener(this);
+        exit.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		exit.setFocusPainted(false);
         panel.add(exit);
 
         back=new JButton("Back");
-        back.setBounds(300,300,90,35);
-        back.setFont(mf3);
+        back.setBounds(200,280,90,35);
+        back.setFont(btnFont);
         back.setForeground(Color.BLACK);
-        back.setBackground(Color.white);
+        back.setBackground(Color.WHITE);
         back.addMouseListener(this);
+        back.addActionListener(this);
+        back.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		back.setFocusPainted(false);
         panel.add(back);
-        
-        img=new ImageIcon("admin-person.png");
+
+        login=new JButton("Login");
+        login.setBounds(300,280,90,35);
+        login.setFont(btnFont);
+        login.setForeground(Color.BLACK);
+        login.setBackground(Color.WHITE);
+        login.addMouseListener(this);
+        login.addActionListener(this);
+        login.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		login.setFocusPainted(false);
+        panel.add(login);
+
+        img=new ImageIcon("Images/Admin-Login.png");
         imgLabel=new JLabel(img);
-        imgLabel.setBounds(520,90,200,300);
-       panel.add(imgLabel);
-
-       
-
+        imgLabel.setBounds(460,90,200,200);
+        panel.add(imgLabel);
 
 
         this.add(panel);
-       
-        
     }
-    @Override
-    public void mouseClicked(MouseEvent e) {
-        // TODO Auto-generated method stub
-        
-    }
-    @Override
-    public void mouseEntered(MouseEvent e) {
-        if(e.getSource()==login)
-        {
-            login.setBackground(col2);
-            login.setForeground(Color.white);
-        }
-        else if(e.getSource()==exit)
-        {
-            exit.setBackground(col2);
-            exit.setForeground(Color.white);
-        }
-        else if(e.getSource()==back)
-        {
-            back.setBackground(col2);
-            back.setForeground(Color.white);
-        }
-    
-    }
-    @Override
-    public void mouseExited(MouseEvent e) {
 
-        login.setBackground(Color.white);
-        login.setForeground(Color.black);
-       exit.setBackground(Color.white);
-        exit.setForeground(Color.black);
-        back.setBackground(Color.white);
-        back.setForeground(Color.black);
-        
+    public void mouseClicked(MouseEvent me){}
+	public void mousePressed(MouseEvent me){}
+	public void mouseReleased(MouseEvent me){}
+
+    public void mouseEntered(MouseEvent me) {
+        if(me.getSource()==login)
+        {
+            login.setBackground(loginCol);
+            login.setForeground(Color.WHITE);
+        }
+        else if(me.getSource()==exit)
+        {
+            exit.setBackground(exitCol);
+            exit.setForeground(Color.WHITE);
+        }
+        else if(me.getSource()==back)
+        {
+            back.setBackground(btnCol);
+            back.setForeground(Color.WHITE);
+        }
+    
     }
-@Override
-public void mousePressed(MouseEvent e) {
-    // TODO Auto-generated method stub
-    
-}
-@Override
-public void mouseReleased(MouseEvent e) {
-    // TODO Auto-generated method stub
-    
-}
-    
+    public void mouseExited(MouseEvent me) {
+
+        login.setBackground(Color.WHITE);
+        login.setForeground(Color.BLACK);
+        exit.setBackground(Color.WHITE);
+        exit.setForeground(Color.BLACK);
+        back.setBackground(Color.WHITE);
+        back.setForeground(Color.BLACK);
+    }
+
+    public void actionPerformed(ActionEvent ae){
+        if(ae.getSource() == login){
+
+        }
+        else if(ae.getSource() == back){
+            Login lg = new Login();
+            lg.setVisible(true);
+            this.setVisible(false);
+        }
+        else if(ae.getSource() == exit){
+            this.setVisible(false);
+        }
+    }
 }
