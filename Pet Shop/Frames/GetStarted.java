@@ -143,10 +143,14 @@ public class GetStarted extends JFrame implements MouseListener, ActionListener
 
 	public void actionPerformed(ActionEvent ae){
 		if(ae.getSource() == login){
-			
+			userlogin ul = new userlogin();
+			ul.setVisible(true);
+			this.setVisible(false);
 		}
 		else if(ae.getSource() == register){
-
+			Register r = new Register();
+			r.setVisible(true);
+			this.setVisible(false);
 		}
 		else if(ae.getSource() == adLogin){
 			adminlogin admin = new adminlogin();
@@ -155,9 +159,6 @@ public class GetStarted extends JFrame implements MouseListener, ActionListener
 		}
 		else if(ae.getSource() == exit){
 			this.setVisible(false);
-		}
-		else{
-
 		}
 	}
 }

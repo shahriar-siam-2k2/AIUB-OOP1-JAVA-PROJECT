@@ -146,10 +146,13 @@ public class AdminPanel extends JFrame implements MouseListener, ActionListener{
 
 	public void actionPerformed(ActionEvent ae){
 		if(ae.getSource() == userdata){
-			
+			UserData ud = new UserData();
+			ud.setVisible(true);
+			this.setVisible(false);
 		}
 		else if(ae.getSource() == cngpass){
-
+			chngAdmin cngAd = new chngAdmin();
+			cngAd.setVisible(true);
 		}
 		else if(ae.getSource() == exit){
 			this.setVisible(false);
