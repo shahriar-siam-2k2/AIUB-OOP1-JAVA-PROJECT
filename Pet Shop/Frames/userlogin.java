@@ -181,9 +181,9 @@ public class userlogin extends JFrame implements MouseListener, ActionListener{
                 if(adAcc.checkAccount(t1, t2) == true){
                     JOptionPane.showMessageDialog(this, "Login Successful, press OK", "WELCOME", JOptionPane.INFORMATION_MESSAGE);
                     
-                    // AdminPanel adpan = new AdminPanel();
-                    // adpan.setVisible(true);
-                    // this.setVisible(false);
+                    PetSelect pet = new PetSelect();
+                    pet.setVisible(true);
+                    this.setVisible(false);
                 }
             }
         }
