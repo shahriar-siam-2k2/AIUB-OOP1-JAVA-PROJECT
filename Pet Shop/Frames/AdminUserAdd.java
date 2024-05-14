@@ -13,8 +13,7 @@ public class AdminUserAdd extends JFrame implements MouseListener, ActionListene
 {
 	JPanel panel;
 	JLabel nameL,emailL, phnL,passL,queL,ansL,defL;
-	JTextField nameF,emailF, phnF,ansF;
-	JPasswordField passF;
+	JTextField nameF,emailF, phnF,ansF, passF;
 	JButton backBtn,addBtn;
 	JComboBox queC;
 	Color panelCol,btnCol,btnHoverCol, exitCol, loginCol;
@@ -86,10 +85,9 @@ public class AdminUserAdd extends JFrame implements MouseListener, ActionListene
 		passL.setFont(defFont);
 		panel.add(passL);
 		
-		passF = new JPasswordField();
+		passF = new JTextField();
 		passF.setBounds(200,240,250,35);
 		passF.setFont(fieldFont);
-		passF.setEchoChar('*');
 		panel.add(passF);
 		
 		String que[] = {"Choose a security question...", "Your hobby?", "Your birth place?", "Your dream job?", "Your favorite car name?"};
@@ -166,28 +164,28 @@ public class AdminUserAdd extends JFrame implements MouseListener, ActionListene
 		if(ae.getSource() == addBtn){
 			String t1, t2, t3, t4, t5, t6;
 			t1 = nameF.getText();
-			t2 = emailF.getText();
-			t3 = phnF.getText();
-			t4 = passF.getText();
+			t2 = passF.getText();
+			t3 = emailF.getText();
+			t4 = phnF.getText();
 			t5 = String.valueOf(queC.getSelectedItem());
 			t6 = ansF.getText();
 
 			if(t1.isEmpty() == true || t2.isEmpty() == true || t3.isEmpty() == true || t4.isEmpty() == true || t5.isEmpty() == true || t6.isEmpty() == true){
 				JOptionPane.showMessageDialog(this, "Please fill out all fields.", "WARNING!", JOptionPane.WARNING_MESSAGE);
 			}
-			else if(t2.contains("@") == false){
+			else if(t3.contains("@") == false){
 				JOptionPane.showMessageDialog(this, "Email should have '@' sign", "Invalid Email!", JOptionPane.WARNING_MESSAGE);
 			}
-			else if(t3.length() < 11 || t3.length() > 11){
+			else if(t4.length() < 11 || t3.length() > 11){
 				JOptionPane.showMessageDialog(this, "Phone number should be 11 digits!", "Invalid Phone Number", JOptionPane.WARNING_MESSAGE);
 			}
 			else{
 				UserAccount acc = new UserAccount(t1, t2, t3, t4, t5, t6);
 				acc.addAccount();
 
-				JOptionPane.showMessageDialog(this, "User added successfully", "User Added", JOptionPane.INFORMATION_MESSAGE);
-
 				this.setVisible(false);
+				UserData frame = new UserData();
+				frame.setVisible(true);
 			}
         }
         else if(ae.getSource() == backBtn){
