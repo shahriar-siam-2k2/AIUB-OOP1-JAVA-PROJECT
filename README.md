@@ -3,6 +3,6 @@ Currently working on 'Forget Password', 'User Profile Edit', 'Contribution'.<br>
 
 Repository Structure:<br>
                      [CourseName] <br>
-                          |____ Work1 <br>
-                               |______ task1.java <br>
-                               |______ task2.java <br>
+                         <pre> |____ Work1 <br>
+                        <pre><pre>  |______ task1.java <br>
+                        <pre><pre>  |______ task2.java <br>
