@@ -5,278 +5,306 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class dogaccessories extends JFrame implements MouseListener,ActionListener{
+public class dogaccessories extends JFrame implements MouseListener, ActionListener{
+	JPanel panel;
+	JLabel name1,name2,name3,name4,name5,name6,wel;
+	JButton b1,b2,b3,b4,b5,b6,back,exit;
+	JLabel imglabel;
+	ImageIcon img1,img2,img3,img4,img5,img6;
+	Font headFont,defFont,fieldFont,btnFont;
+	Color panelCol,btnCol,btnHoverCol, exitCol;
+	
+	public dogaccessories(){
+		
+		super("Pet Shop");
+		this.setSize(900,630);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setLocationRelativeTo(null);
+		this.setResizable(false);
+		
+		panelCol = new Color(255,242,223);
+		btnCol = new Color(61,35,20);
+		btnHoverCol = new Color(241,146,26);
+        exitCol = new Color(217,83,79);
 
-    JLabel name1,pass,wel,imglable,forgotPasswordLabel;
-    JPanel panel;
-   
-    
-    JButton b1,b2,b3,b4,b5,b6,back,exit;
-    Font f1,bf;
-    Color c1,c2,c3;
-    ImageIcon img,img1,img2,img3,img4,img5;
-   
-
-    
-
-    public dogaccessories()
-    {
-        super("Pet Shop");
-        this.setSize(900,600);
-        this.setLocationRelativeTo(null);
-
-        f1=new Font("Segoe UI",Font.BOLD,32);
-        bf=new Font("Arial Black",Font.BOLD,15);
-        c1=new Color(255,242,223);
-        c2=new Color(241,146,26);
-        c3=new Color(61,35,20);
-
-        panel=new JPanel();
-        panel.setLayout(null);
-        panel.setBackground(c1);
-        this.add(panel);
-
-        wel=new JLabel("Dog Accessories ");
+		headFont = new Font("Segoe UI",Font.BOLD,32);
+		defFont = new Font("Segoe UI",Font.BOLD,18);
+		fieldFont = new Font("Segoe UI",Font.PLAIN,16);
+		btnFont = new Font("Serif Bold",Font.BOLD,18);
+		
+		panel=new JPanel();
+		panel.setLayout(null);
+		panel.setBackground(panelCol);
+		this.add(panel);
+		
+		//Heading part
+		
+		wel=new JLabel("DOG ACCESSORIES");
         wel.setBounds(330,0,600,95);
-        wel.setForeground(c3);
-        wel.setFont(f1);
+        wel.setForeground(btnCol);
+        wel.setFont(headFont);
         panel.add(wel);
-
-        b1=new JButton();
-
-        img=new ImageIcon("Images/dogneckbelt.jpg");
-
-        img1=new ImageIcon("Images/dogecollar.jpg");
-
-        img2=new ImageIcon("Images/dogbodybelt.jpg");
-
-        img3=new ImageIcon("Images/dogbag.jpg");
-
-        img4=new ImageIcon("Images/dogtoy.jpg");
-
-        img5=new ImageIcon("Images/pedigreedogfood.jpg");
-
-
-        b1=new JButton(img);
-        b1.setBounds(90,110,150,150);
-        b1.setBackground(null);
+		
+		//image & buttons & name & price 
+		
+		img1=new ImageIcon("Images/dogbodybelt.jpg");
+		imglabel=new JLabel(img1);
+		panel.add(imglabel);
+		
+		b1=new JButton(img1);
+		b1.setBounds(90,110,150,150);
+		b1.setBackground(null);
+		b1.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		b1.setFocusPainted(false);
+		b1.addMouseListener(this);
 		b1.addActionListener(this);
-        panel.add(b1);
-
-        name1=new JLabel("Dog Neck Collar/Belt");
-        name1.setBounds(105,260,100,30);
-        name1.setForeground(c3);
-        name1.setFont(bf);
+		panel.add(b1);
+		
+		name1=new JLabel("Dog Body Belt");
+        name1.setBounds(90,260,300,30);
+        name1.setForeground(btnCol);
+        name1.setFont(defFont);
         panel.add(name1);
-
-        name1=new JLabel("Price 200 Tk");
-        name1.setBounds(99,277,150,30);
-        name1.setForeground(c3);
-        name1.setFont(bf);
+		
+		name1=new JLabel("Price 400 Tk");
+        name1.setBounds(90,280,150,30);
+        name1.setForeground(btnCol);
+        name1.setFont(fieldFont);
         panel.add(name1);
-
-        b2=new JButton(img1);
-        b2.setBounds(320,110,150,150);
-        b2.setBackground(null);
+		
+		
+		
+		
+		img2=new ImageIcon("Images/dogtoy.jpg");
+		imglabel=new JLabel(img2);
+		panel.add(imglabel);
+		
+		b2=new JButton(img2);
+		b2.setBounds(370,110,150,150);
+		b2.setBackground(null);
+		b2.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		b2.setFocusPainted(false);
+		b2.addMouseListener(this);
 		b2.addActionListener(this);
-        panel.add(b2);
-
-        name1=new JLabel("Dog E Collar");
-        name1.setBounds(340,260,100,30);
-        name1.setForeground(c3);
-        name1.setFont(bf);
-        panel.add(name1);
-
-        name1=new JLabel("Price 460 Tk");
-        name1.setBounds(335,277,110,30);
-        name1.setForeground(c3);
-        name1.setFont(bf);
-        panel.add(name1);
-
-        b3=new JButton(img2);
-        b3.setBounds(550,110,150,150);
-        b3.setBackground(null);
+		panel.add(b2);
+		
+		name2=new JLabel("Dog Toy");
+        name2.setBounds(370,260,300,30);
+        name2.setForeground(btnCol);
+        name2.setFont(defFont);
+        panel.add(name2);
+		
+		name2=new JLabel("Price 40 Tk");
+        name2.setBounds(370,280,110,30);
+        name2.setForeground(btnCol);
+        name2.setFont(fieldFont);
+        panel.add(name2);
+		
+		
+		
+		
+		img3=new ImageIcon("Images/dogneckbelt.jpg");
+		imglabel=new JLabel(img3);
+		panel.add(imglabel);
+		
+		b3=new JButton(img3);
+		b3.setBounds(650,110,150,150);
+		b3.setBackground(null);
+		b3.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		b3.setFocusPainted(false);
+		b3.addMouseListener(this);
 		b3.addActionListener(this);
-        panel.add(b3);
-
-        name1=new JLabel("Dog Body Belt");
-        name1.setBounds(575,260,100,30);
-        name1.setForeground(c3);
-        name1.setFont(bf);
-        panel.add(name1);
-
-        name1=new JLabel("Price 500 Tk");
-        name1.setBounds(571,277,110,30);
-        name1.setForeground(c3);
-        name1.setFont(bf);
-        panel.add(name1);
-
-        b4=new JButton(img3);
-        b4.setBounds(90,320,150,150);
-        b4.setBackground(null);
+		panel.add(b3);
+		
+		name3=new JLabel("Dog Neck Collar/Belt");
+        name3.setBounds(650,260,300,30);
+        name3.setForeground(btnCol);
+        name3.setFont(defFont);
+        panel.add(name3);
+		
+		name3=new JLabel("Price 280 Tk");
+        name3.setBounds(650,280,110,30);
+        name3.setForeground(btnCol);
+        name3.setFont(fieldFont);
+        panel.add(name3);
+		
+		
+		
+		
+		img4=new ImageIcon("Images/dogbag.jpg");
+		imglabel=new JLabel(img4);
+		panel.add(imglabel);
+		
+		b4=new JButton(img4);
+		b4.setBounds(90,320,150,150);
+		b4.setBackground(null);
+		b4.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		b4.setFocusPainted(false);
+		b4.addMouseListener(this);
 		b4.addActionListener(this);
-        panel.add(b4);
-
-        name1=new JLabel("Dog Bag");
-        name1.setBounds(105,470,100,30);
-        name1.setForeground(c3);
-        name1.setFont(bf);
-        panel.add(name1);
-
-        name1=new JLabel("Price 400 Tk");
-        name1.setBounds(100,487,110,30);
-        name1.setForeground(c3);
-        name1.setFont(bf);
-        panel.add(name1);
-
-        b5=new JButton(img4);
-        b5.setBounds(320,320,150,150);
-        b5.setBackground(null);
+		panel.add(b4);
+		
+		name4=new JLabel("Dog Bag");
+        name4.setBounds(90,470,300,30);
+        name4.setForeground(btnCol);
+        name4.setFont(defFont);
+        panel.add(name4);
+		
+		name4=new JLabel("Price 900 Tk");
+        name4.setBounds(90,490,140,30);
+        name4.setForeground(btnCol);
+        name4.setFont(fieldFont);
+        panel.add(name4);
+		
+		
+		
+		
+		img5=new ImageIcon("Images/pedigreedogfood.jpg");
+		imglabel=new JLabel(img5);
+		panel.add(imglabel);
+		
+		b5=new JButton(img5);
+		b5.setBounds(370,320,150,150);
+		b5.setBackground(null);
+		b5.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		b5.setFocusPainted(false);
+		b5.addMouseListener(this);
 		b5.addActionListener(this);
-        panel.add(b5);
-
-        name1=new JLabel("Dog Toy");
-        name1.setBounds(340,470,100,30);
-        name1.setForeground(c3);
-        name1.setFont(bf);
-        panel.add(name1);
-
-        name1=new JLabel("Price 700 Tk");
-        name1.setBounds(335,487,110,30);
-        name1.setForeground(c3);
-        name1.setFont(bf);
-        panel.add(name1);
-
-        b6=new JButton(img5);
-        b6.setBounds(570,320,150,150);
-        b6.setBackground(null);
+		panel.add(b5);
+		
+		name5=new JLabel("Pedigree Dog Food");
+        name5.setBounds(370,470,300,30);
+        name5.setForeground(btnCol);
+        name5.setFont(defFont);
+        panel.add(name5);
+		
+		name5=new JLabel("Price 700 Tk");
+        name5.setBounds(370,490,150,30);
+        name5.setForeground(btnCol);
+        name5.setFont(fieldFont);
+        panel.add(name5);
+		
+		
+		
+		
+		img6=new ImageIcon("Images/dogecollar.jpg");
+		imglabel=new JLabel(img6);
+		panel.add(imglabel);
+		
+		b6=new JButton(img6);
+		b6.setBounds(650,320,150,150);
+		b6.setBackground(null);
+		b6.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		b6.setFocusPainted(false);
+		b6.addMouseListener(this);
 		b6.addActionListener(this);
-        panel.add(b6);
-
-        name1=new JLabel("Pedigree Dog Food");
-        name1.setBounds(575,470,100,30);
-        name1.setForeground(c3);
-        name1.setFont(bf);
-        panel.add(name1);
-
-        name1=new JLabel("Price 800 Tk");
-        name1.setBounds(575,487,110,30);
-        name1.setForeground(c3);
-        name1.setFont(bf);
-        panel.add(name1);
-
-
-
-
-
-
-
-
-
-       
-
-      
-
-        back=new JButton("Back");
-        back.setBounds(710,530,80,30);
-        back.setBackground(c2);
-        back.setFont(bf);
+		panel.add(b6);
+		
+		name6=new JLabel("Dog E Collar");
+        name6.setBounds(650,470,300,30);
+        name6.setForeground(btnCol);
+        name6.setFont(defFont);
+        panel.add(name6);
+		
+		name6=new JLabel("Price 400 Tk");
+        name6.setBounds(650,490,150,30);
+        name6.setForeground(btnCol);
+        name6.setFont(fieldFont);
+        panel.add(name6);
+		
+		
+		//buttons
+		
+		
+		back=new JButton("Back");
+        back.setBounds(465,540,100,30);
+        back.setBackground(btnCol);
+        back.setFont(btnFont);
         back.setForeground(Color.WHITE);
+        back.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        back.setFocusPainted(false);
         back.addMouseListener(this);
-		back.addActionListener(this);
+        back.addActionListener(this);
         panel.add(back);
-
-        exit=new JButton("Exit");
-        exit.setBounds(800,530,80,30);
-        exit.setBackground(c2);
-        exit.setFont(bf);
+		
+		
+		exit=new JButton("Exit");
+        exit.setBounds(325,540,100,30);
+        exit.setBackground(btnCol);
+        exit.setFont(btnFont);
         exit.setForeground(Color.WHITE);
+        exit.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        exit.setFocusPainted(false);
         exit.addMouseListener(this);
-		exit.addActionListener(this);
+        exit.addActionListener(this);
         panel.add(exit);
-
-      
-
-       
-      
-       
-
-
-    }
-   
-    public void mouseClicked(MouseEvent e) {
-
-        if(e.getSource()==forgotPasswordLabel)
-        {
-            JOptionPane.showConfirmDialog(this,"Do you want to recover Password ?","User login of Pet Shop",JOptionPane.YES_NO_OPTION);
-        }
-    }
+	}
+	
+	
+	
+	public void mouseClicked(MouseEvent e) {}
     
     public void mouseEntered(MouseEvent e) {
 
         if(e.getSource()==back)
         {
-            back.setBackground(c3);
+            back.setBackground(btnHoverCol);
             
         }
         else if(e.getSource()==exit)
         {
-            exit.setBackground(c3);
+            exit.setBackground(exitCol);
         }
        
     }
    
     public void mouseExited(MouseEvent e) {
-        back.setBackground(c2);
-        exit.setBackground(c2);
-       
+        back.setBackground(btnCol);
+        exit.setBackground(btnCol);
     }
    
     public void mousePressed(MouseEvent e) {}
    
     public void mouseReleased(MouseEvent e) {}
-    
-	
-	
-	public void actionPerformed(ActionEvent ae){
-		if(ae.getSource()==b1){
-			DogProduct3 A1=new DogProduct3();
-			A1.setVisible(true);
-			this.setVisible(false);
-		}
-		else if(ae.getSource()==b2){
-			DogProduct6 A2=new DogProduct6();
-			A2.setVisible(true);
-			this.setVisible(false);
-		}
-		else if(ae.getSource()==b3){
-			DogProduct1 A3=new DogProduct1();
-			A3.setVisible(true);
-			this.setVisible(false);
-		}
-		else if(ae.getSource()==b4){
-			DogProduct4 A4=new DogProduct4();
-			A4.setVisible(true);
-			this.setVisible(false);
-		}
-		else if(ae.getSource()==b5){
-			DogProduct2 A5=new DogProduct2();
-			A5.setVisible(true);
-			this.setVisible(false);
-		}
-		else if(ae.getSource()==b6){
-			DogProduct5 A6=new DogProduct5();
-			A6.setVisible(true);
-			this.setVisible(false);
-		}
-		else if(ae.getSource()==exit){
-			this.setVisible(false);
-		}
-		else if(ae.getSource()==back){
-			PetSelect P1=new PetSelect();
-			P1.setVisible(true);
-			this.setVisible(false);
-		}
-	}
-}
 
+    public void actionPerformed(ActionEvent ae){
+        if(ae.getSource() == b1){
+            DogProduct1 c1 = new DogProduct1();
+            c1.setVisible(true);
+            this.setVisible(false);
+        }
+        else if(ae.getSource() == b2){
+            DogProduct2 c2 = new DogProduct2();
+            c2.setVisible(true);
+            this.setVisible(false);
+        }
+        else if(ae.getSource() == b3){
+            DogProduct3 c3 = new DogProduct3();
+            c3.setVisible(true);
+            this.setVisible(false);
+        }
+        else if(ae.getSource() == b4){
+            DogProduct4 c4 = new DogProduct4();
+            c4.setVisible(true);
+            this.setVisible(false);
+        }
+        else if(ae.getSource() == b5){
+            DogProduct5 c5 = new DogProduct5();
+            c5.setVisible(true);
+            this.setVisible(false);
+        }
+        else if(ae.getSource() == b6){
+            DogProduct6 c6 = new DogProduct6();
+            c6.setVisible(true);
+            this.setVisible(false);
+        }
+        else if(ae.getSource() == back){
+            PetSelect ps = new PetSelect();
+            ps.setVisible(true);
+            this.setVisible(false);
+        }
+        else if(ae.getSource() == exit){
+            this.setVisible(false);
+        }
+    }
+}

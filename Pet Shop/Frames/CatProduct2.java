@@ -15,13 +15,14 @@ public class CatProduct2 extends JFrame implements MouseListener, ActionListener
 	Color panelCol,btnCol,btnHoverCol;
 	Font headFont,defFont,fieldFont,btnFont;
 	
-	private double price = 400;
-	private String product = "Cat Stick Ball Toy";
+	private double price = 460;
+	private String product = "Cat Playing Toy";
 	private double updatePrice;
+	private int redirect = 1; // Cat = 1, Dog = 2
 
 	public CatProduct2(){
 		
-		super("Cat Stick Ball Toy");
+		super("Cat Playing Toy");
 		this.setSize(900,600);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLocationRelativeTo(null);
@@ -45,7 +46,7 @@ public class CatProduct2 extends JFrame implements MouseListener, ActionListener
 		
 		//texts
 		
-		name=new JLabel("Images/Cat Stick Ball Toy");
+		name=new JLabel("Cat Playing Toy");
 		name.setBounds(453,200,400,40);
 		name.setFont(headFont);
 		panel.add(name);
@@ -86,7 +87,7 @@ public class CatProduct2 extends JFrame implements MouseListener, ActionListener
 		
 		//Picture
 		
-		img=new ImageIcon("catplayingtoy.jpg");
+		img=new ImageIcon("Images/Big/catplayingtoy.jpg");
 		imglabel=new JLabel(img);
 		imglabel.setBounds(22,80,400,400);
 		panel.add(imglabel);
@@ -180,6 +181,10 @@ public class CatProduct2 extends JFrame implements MouseListener, ActionListener
 				updatePrice = price * quantity;
 				update.setText(" X " + quantity + " = " + updatePrice + " BDT");
 			}
+			else if(quantity == 5){
+				updatePrice = price * quantity;
+				update.setText(" X " + quantity + " = " + updatePrice + " BDT");
+			}
 		}
 		else if(ae.getSource() == buybt){
 			int index = combo.getSelectedIndex();
@@ -188,6 +193,7 @@ public class CatProduct2 extends JFrame implements MouseListener, ActionListener
 			}
 			else{
 				PayOpt po = new PayOpt();
+				po.setPriceCp2(updatePrice, redirect, this);
 				this.setVisible(false);
 				po.setVisible(true);
 			}

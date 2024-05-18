@@ -2,6 +2,9 @@ package Frames;
 
 import java.lang.*;
 import javax.swing.*; // javac *.java && java Start
+
+import Classes.UserAccount;
+
 import java.awt.*;
 import java.awt.event.*;
 
@@ -14,13 +17,22 @@ public class Bkash extends JFrame implements MouseListener, ActionListener{
 	JTextField number;
 	Color panelCol,btnCol,btnHoverCol;
 	Font headFont,defFont,fieldFont,btnFont;
+
+	PayOpt po;
+
+	private double price;
+	private int redirect;
 	
-	public Bkash(){
-		super("Bkash");
+	public Bkash(double price, int redirect, PayOpt po){
+		super("Bkash Payment");
 		this.setSize(500,625);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLocationRelativeTo(null); //middle point popup
 		this.setResizable(false);
+
+		this.po = po;
+		this.redirect = redirect;
+		this.price = price;
 		
 		panelCol = new Color(255,242,223);
 		btnCol = new Color(61,35,20);
@@ -69,14 +81,15 @@ public class Bkash extends JFrame implements MouseListener, ActionListener{
 		panel.add(number);
 		
 		marchant=new JLabel("Pet Shop Merchant");
-		marchant.setBounds(60,145,400,30);
+		marchant.setBounds(60,155,400,30);
 		marchant.setFont(new Font("Segoe UI",Font.PLAIN,14));
 		panel.add(marchant);
 		
-		// bdt=new JLabel("BDT 1085");
-		// bdt.setBounds(370,145,200,50);
-		// bdt.setFont(new Font("Segoe UI",Font.PLAIN,22));
-		// panel.add(bdt);
+		bdt=new JLabel();
+		bdt.setText("BDT " + price);
+		bdt.setBounds(342,145,150,50);
+		bdt.setFont(new Font("Segoe UI",Font.PLAIN,22));
+		panel.add(bdt);
 		
 		enterV=new JLabel("Enter your Bkash account number");
 		enterV.setBounds(125,290,400,30);
@@ -94,14 +107,7 @@ public class Bkash extends JFrame implements MouseListener, ActionListener{
 		call.setBounds(165,505,300,100);
 		call.setFont(new Font("Segoe UI",Font.BOLD,26));
 		call.setForeground(new Color(226,17,111));
-		panel.add(call);
-		
-		
-		
-		
-		
-		
-		
+		panel.add(call);	
 		
 		//Picture
 		
@@ -142,19 +148,39 @@ public class Bkash extends JFrame implements MouseListener, ActionListener{
 	public void actionPerformed(ActionEvent ae){
 		if(ae.getSource() == confirmBt){
 			String num = number.getText();
-			if(num.length() < 11 || num.length() > 11){
+
+			if(num.length() == 0){
+				JOptionPane.showMessageDialog(this, "Enter mobile number.", "Empty Field", JOptionPane.WARNING_MESSAGE);
+			}
+			else if (!num.matches("\\d+")) {
+				JOptionPane.showMessageDialog(this, "Phone number should contain only numbers!", "Invalid Input", JOptionPane.WARNING_MESSAGE);
+			}
+			else if(num.length() < 11 || num.length() > 11){
 				JOptionPane.showMessageDialog(this, "Phone number should be 11 digits!", "Invalid Phone Number", JOptionPane.WARNING_MESSAGE);
 			}
 			else{
-				BkashVerification b = new BkashVerification();
+				BkashVerification b = new BkashVerification(price, redirect, num, this);
 				b.setVisible(true);
 				this.setVisible(false);
 			}
 		}
 		else if(ae.getSource() == closeBt){
-			PayOpt po = new PayOpt();
-			this.setVisible(false);
-			po.setVisible(true);
+			int confirm = JOptionPane.showConfirmDialog(this, "Are you sure?\n(By clicking YES your payment will cancel)", "Confirmation", JOptionPane.YES_NO_OPTION);
+
+			if(confirm == JOptionPane.YES_OPTION){
+				JOptionPane.showMessageDialog(this, "Order place failed due to payment cancellation!", "Payment Failed", JOptionPane.ERROR_MESSAGE);
+
+				this.setVisible(false);
+				
+				if(redirect == 1){
+					cataccessories cat = new cataccessories();
+					cat.setVisible(true);
+				}
+				else if(redirect == 2){
+					dogaccessories dog = new dogaccessories();
+					dog.setVisible(true);
+				}
+			}
 		}
 	}
 }

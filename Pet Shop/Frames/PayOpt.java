@@ -14,6 +14,23 @@ public class PayOpt extends JFrame implements MouseListener,ActionListener
 	JButton card,bkash,nagad,exit,back;
 	Color panelCol,btnCol,hovCol,clr;
 	Font headFont,defFont,btnFont;
+
+	CatProduct1 cp1;
+	CatProduct2 cp2;
+	CatProduct3 cp3;
+	CatProduct4 cp4;
+	CatProduct5 cp5;
+	CatProduct6 cp6;
+
+	DogProduct1 dp1;
+	DogProduct2 dp2;
+	DogProduct3 dp3;
+	DogProduct4 dp4;
+	DogProduct5 dp5;
+	DogProduct6 dp6;
+
+	private double price;
+	private int redirect;
 	
 	public PayOpt()
 	{
@@ -21,7 +38,6 @@ public class PayOpt extends JFrame implements MouseListener,ActionListener
 		this.setSize(600,400);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLocationRelativeTo(null);
-		
 		
 		panelCol = new Color(255,242,223);
 		btnCol = new Color(61,35,20);
@@ -53,16 +69,31 @@ public class PayOpt extends JFrame implements MouseListener,ActionListener
 		card = new JButton(img);
 		card.setBounds(90,100,120,113);
 		card.setBackground(null);
+		card.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        card.setFocusPainted(false);
+		card.setBorderPainted(false);
+		card.addMouseListener(this);
+		card.addActionListener(this);
 		panel.add(card);
 		
 		bkash = new JButton(img1);
 		bkash.setBounds(237,100,120,113);
 		bkash.setBackground(null);
+		bkash.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        bkash.setFocusPainted(false);
+		bkash.setBorderPainted(false);
+		bkash.addMouseListener(this);
+		bkash.addActionListener(this);
 		panel.add(bkash);
 		
 		nagad = new JButton(img2);
 		nagad.setBounds(380,100,120,113);
 		nagad.setBackground(null);
+		nagad.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        nagad.setFocusPainted(false);
+		nagad.setBorderPainted(false);
+		nagad.addMouseListener(this);
+		nagad.addActionListener(this);
 		panel.add(nagad);
 		
 		cardL = new JLabel("Card");
@@ -87,6 +118,10 @@ public class PayOpt extends JFrame implements MouseListener,ActionListener
 		exit.setForeground(Color.WHITE);
 		exit.setBackground(clr);
 		exit.setFont(btnFont);
+		exit.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        exit.setFocusPainted(false);
+		exit.addMouseListener(this);
+		exit.addActionListener(this);
 		panel.add(exit);
 		
 		back = new JButton("Back");
@@ -94,11 +129,79 @@ public class PayOpt extends JFrame implements MouseListener,ActionListener
 		back.setForeground(Color.WHITE);
 		back.setBackground(btnCol);
 		back.setFont(btnFont);
-		panel.add(back);
-
-		
-		
+		back.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        back.setFocusPainted(false);
+		back.addMouseListener(this);
+		back.addActionListener(this);
+		panel.add(back);	
 	}
+
+	//price setter using inheritance
+
+	public void setPriceCp1(double price, int redirect, CatProduct1 cp1){
+		this.cp1 = cp1;
+		this.price = price;
+		this.redirect = redirect;
+	}
+	public void setPriceCp2(double price, int redirect, CatProduct2 cp2){
+		this.cp2 = cp2;
+		this.price = price;
+		this.redirect = redirect;
+	}
+	public void setPriceCp3(double price, int redirect, CatProduct3 cp3){
+		this.cp3 = cp3;
+		this.price = price;
+		this.redirect = redirect;
+	}
+	public void setPriceCp4(double price, int redirect, CatProduct4 cp4){
+		this.cp4 = cp4;
+		this.price = price;
+		this.redirect = redirect;
+	}
+	public void setPriceCp5(double price, int redirect, CatProduct5 cp5){
+		this.cp5 = cp5;
+		this.price = price;
+		this.redirect = redirect;
+	}
+	public void setPriceCp6(double price, int redirect, CatProduct6 cp6){
+		this.cp6 = cp6;
+		this.price = price;
+		this.redirect = redirect;
+	}
+
+	public void setPriceDp1(double price, int redirect, DogProduct1 dp1){
+		this.dp1 = dp1;
+		this.price = price;
+		this.redirect = redirect;
+	}
+	public void setPriceDp2(double price, int redirect, DogProduct2 dp2){
+		this.dp2 = dp2;
+		this.price = price;
+		this.redirect = redirect;
+	}
+	public void setPriceDp3(double price, int redirect, DogProduct3 dp3){
+		this.dp3 = dp3;
+		this.price = price;
+		this.redirect = redirect;
+	}
+	public void setPriceDp4(double price, int redirect, DogProduct4 dp4){
+		this.dp4 = dp4;
+		this.price = price;
+		this.redirect = redirect;
+	}
+	public void setPriceDp5(double price, int redirect, DogProduct5 dp5){
+		this.dp5 = dp5;
+		this.price = price;
+		this.redirect = redirect;
+	}
+	public void setPriceDp6(double price, int redirect, DogProduct6 dp6){
+		this.dp6 = dp6;
+		this.price = price;
+		this.redirect = redirect;
+	}
+
+	//mouse properties
+
 	public void mouseClicked(MouseEvent me){}
 	public void mousePressed(MouseEvent me){}
 	public void mouseReleased(MouseEvent me){}
@@ -115,13 +218,16 @@ public class PayOpt extends JFrame implements MouseListener,ActionListener
 			back.setBackground(hovCol);
 			back.setForeground(Color.WHITE);
 		}
-		
-		else
-		{
-			
+		else if(me.getSource() == card){
+			card.setBorderPainted(true);
+		}
+		else if(me.getSource() == bkash){
+			bkash.setBorderPainted(true);
+		}
+		else if(me.getSource() == nagad){
+			nagad.setBorderPainted(true);
 		}
 	}
-	
 	public void mouseExited(MouseEvent me)
 	{
 		
@@ -135,38 +241,48 @@ public class PayOpt extends JFrame implements MouseListener,ActionListener
 			back.setBackground(btnCol);
 			back.setForeground(Color.WHITE);
 		}
-		
-		else
-		{
-			
+		else if(me.getSource() == card){
+			card.setBorderPainted(false);
+		}
+		else if(me.getSource() == bkash){
+			bkash.setBorderPainted(false);
+		}
+		else if(me.getSource() == nagad){
+			nagad.setBorderPainted(false);
 		}
 	}
 		
-	    public void actionPerformed(ActionEvent ae)
-	    {
-		  if(ae.getSource()==back)
-		  {
-			PetSelect ps = new PetSelect();
-			ps.setVisible(true);
-			this.setVisible(false);
-		  }
-		  else if(ae.getSource() == card){
-				card c = new card();
-				c.setVisible(true);
+	//Action properties
+
+	public void actionPerformed(ActionEvent ae)
+	{
+		if(ae.getSource()==back)
+		{
+			if(redirect == 1){
+				cataccessories cat = new cataccessories();
+				cat.setVisible(true);
 				this.setVisible(false);
-		  }
-		  else if(ae.getSource() == bkash){
-			card c = new card();
+			}
+			else if(redirect == 2){
+				dogaccessories dog = new dogaccessories();
+				dog.setVisible(true);
+				this.setVisible(false);
+			}
+		}
+		else if(ae.getSource() == card){
+			card c = new card(redirect, this);
 			c.setVisible(true);
 			this.setVisible(false);
-	  		}
-			else if(ae.getSource() == nagad){
-				JOptionPane.showMessageDialog(this, "Not available right now", "Not Available", JOptionPane.INFORMATION_MESSAGE);
-			}
-	    }
-		
-	
-	
-}	
-	
-	
+		}
+		else if(ae.getSource() == bkash){
+			Bkash c = new Bkash(price, redirect, this);
+			c.setVisible(true);
+			this.setVisible(false);
+		}
+		else if(ae.getSource() == nagad){
+			Nagad n = new Nagad(price, redirect, this);
+			n.setVisible(true);
+			this.setVisible(false);
+		}
+	}
+}

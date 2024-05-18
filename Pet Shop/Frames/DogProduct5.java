@@ -14,9 +14,10 @@ public class DogProduct5 extends JFrame implements MouseListener, ActionListener
 	Color panelCol,btnCol,btnHoverCol;
 	Font headFont,defFont,fieldFont,btnFont;
 	
-	private double price = 400;
+	private double price = 700;
 	private String product = "Pedigree Dog Food";
 	private double updatePrice;
+	private int redirect = 2; // Cat = 1, Dog = 2
 
 	public DogProduct5(){
 		
@@ -85,7 +86,7 @@ public class DogProduct5 extends JFrame implements MouseListener, ActionListener
 		
 		//Picture
 		
-		img=new ImageIcon("Images/pedigreedogfood.jpg");
+		img=new ImageIcon("Images/Big/pedigreedogfood.jpg");
 		imglabel=new JLabel(img);
 		imglabel.setBounds(22,80,400,400);
 		panel.add(imglabel);
@@ -179,6 +180,10 @@ public class DogProduct5 extends JFrame implements MouseListener, ActionListener
 				updatePrice = price * quantity;
 				update.setText(" X " + quantity + " = " + updatePrice + " BDT");
 			}
+			else if(quantity == 5){
+				updatePrice = price * quantity;
+				update.setText(" X " + quantity + " = " + updatePrice + " BDT");
+			}
 		}
 		else if(ae.getSource() == buybt){
 			int index = combo.getSelectedIndex();
@@ -187,6 +192,7 @@ public class DogProduct5 extends JFrame implements MouseListener, ActionListener
 			}
 			else{
 				PayOpt po = new PayOpt();
+				po.setPriceDp5(updatePrice, redirect, this);
 				this.setVisible(false);
 				po.setVisible(true);
 			}
