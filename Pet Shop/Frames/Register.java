@@ -291,7 +291,9 @@ public class Register extends JFrame implements MouseListener, ActionListener{
 			this.setVisible(false);
 		}
 		else if(ae.getSource() == back){
-
+			GetStarted gs = new GetStarted();
+			gs.setVisible(true);
+			this.setVisible(false);
 		}
 		else if(ae.getSource() == reset){
 			this.setVisible(false);

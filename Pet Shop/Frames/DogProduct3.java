@@ -17,6 +17,7 @@ public class DogProduct3 extends JFrame implements MouseListener, ActionListener
 	private double price = 400;
 	private String product = "Dog Neck Collar/Belt";
 	private double updatePrice;
+	private int redirect = 2; // Cat = 1, Dog = 2
 
 	public DogProduct3(){
 		
@@ -179,6 +180,10 @@ public class DogProduct3 extends JFrame implements MouseListener, ActionListener
 				updatePrice = price * quantity;
 				update.setText(" X " + quantity + " = " + updatePrice + " BDT");
 			}
+			else if(quantity == 5){
+				updatePrice = price * quantity;
+				update.setText(" X " + quantity + " = " + updatePrice + " BDT");
+			}
 		}
 		else if(ae.getSource() == buybt){
 			int index = combo.getSelectedIndex();
@@ -187,6 +192,7 @@ public class DogProduct3 extends JFrame implements MouseListener, ActionListener
 			}
 			else{
 				PayOpt po = new PayOpt();
+				po.setPriceDp3(updatePrice, redirect, this);
 				this.setVisible(false);
 				po.setVisible(true);
 			}

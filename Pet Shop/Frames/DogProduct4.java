@@ -17,6 +17,7 @@ public class DogProduct4 extends JFrame implements MouseListener, ActionListener
 	private double price = 1400;
 	private String product = "Dog Bag";
 	private double updatePrice;
+	private int redirect = 2; // Cat = 1, Dog = 2
 
 	public DogProduct4(){
 		
@@ -179,6 +180,10 @@ public class DogProduct4 extends JFrame implements MouseListener, ActionListener
 				updatePrice = price * quantity;
 				update.setText(" X " + quantity + " = " + updatePrice + " BDT");
 			}
+			else if(quantity == 5){
+				updatePrice = price * quantity;
+				update.setText(" X " + quantity + " = " + updatePrice + " BDT");
+			}
 		}
 		else if(ae.getSource() == buybt){
 			int index = combo.getSelectedIndex();
@@ -187,6 +192,7 @@ public class DogProduct4 extends JFrame implements MouseListener, ActionListener
 			}
 			else{
 				PayOpt po = new PayOpt();
+				po.setPriceDp4(updatePrice, redirect, this);
 				this.setVisible(false);
 				po.setVisible(true);
 			}

@@ -14,13 +14,22 @@ public class Bkashpin extends JFrame implements MouseListener, ActionListener{
 	JPasswordField pin;
 	Color panelCol,btnCol,btnHoverCol;
 	Font headFont,defFont,fieldFont,btnFont;
+
+	BkashVerification bkVer;
+
+	private double price;
+	private int redirect;
 	
-	public Bkashpin(){
+	public Bkashpin(double price, int redirect, BkashVerification bkVer){
 		super("Bkash");
 		this.setSize(500,625);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLocationRelativeTo(null); //middle point popup
 		this.setResizable(false);
+
+		this.bkVer = bkVer;
+		this.redirect = redirect;
+		this.price = price;
 		
 		panelCol = new Color(255,242,223);
 		btnCol = new Color(61,35,20);
@@ -68,41 +77,31 @@ public class Bkashpin extends JFrame implements MouseListener, ActionListener{
 		pin.setFont(fieldFont);
 		pin.setFont(new Font("Serif Bold",Font.BOLD,29));
 
-		
 		panel.add(pin);
-		
-		
-
 
 		marchant=new JLabel("Pet Shop Merchant");
-		marchant.setBounds(60,145,400,30);
+		marchant.setBounds(60,155,400,30);
 		marchant.setFont(new Font("Segoe UI",Font.PLAIN,14));
 		panel.add(marchant);
 		
-		bdt=new JLabel("BDT 1085");
-		bdt.setBounds(370,145,200,50);
+		bdt=new JLabel();
+		bdt.setText("BDT " + price);
+		bdt.setBounds(342,145,150,50);
 		bdt.setFont(new Font("Segoe UI",Font.PLAIN,22));
 		panel.add(bdt);
 		
 		enterV=new JLabel("Enter your Bkash PIN number");
-		enterV.setBounds(125,290,400,30);
+		enterV.setBounds(130,290,400,30);
 		enterV.setFont(fieldFont);
 		enterV.setForeground(Color.WHITE);
 		panel.add(enterV);
-		
-		
 		
 		call=new JLabel("CALL  16247");
 		call.setBounds(165,505,300,100);
 		call.setFont(new Font("Segoe UI",Font.BOLD,26));
 		call.setForeground(new Color(226,17,111));
 		panel.add(call);
-		
-		
-		
-		
-	
-		
+
 		pink=new ImageIcon("Images/pinkbackground.jpg");
 		logolabel=new JLabel(pink);
 		logolabel.setBounds(0,203,550,325);
@@ -142,17 +141,42 @@ public class Bkashpin extends JFrame implements MouseListener, ActionListener{
         int len = ch.length;
 
         if(ae.getSource() == confirm){
-            if(len > 5 || len < 3){
-              JOptionPane.showMessageDialog(this, "Bkash PIN should be 5 digits!", "Invalid PIN", JOptionPane.WARNING_MESSAGE);
+			if(len == 0){
+				JOptionPane.showMessageDialog(this, "Enter PIN.", "Empty Field", JOptionPane.WARNING_MESSAGE);
+			}
+            else if(len > 5 || len < 5){
+              	JOptionPane.showMessageDialog(this, "Bkash PIN should be 5 digits!", "Invalid PIN", JOptionPane.WARNING_MESSAGE);
             }
             else{
 				JOptionPane.showMessageDialog(this, "Payment successful. Your order is placed!", "Successful", JOptionPane.INFORMATION_MESSAGE);
+					
+				if(redirect == 1){
+					cataccessories cat = new cataccessories();
+					cat.setVisible(true);
+				}
+				else if(redirect == 2){
+					dogaccessories dog = new dogaccessories();
+					dog.setVisible(true);
+				}
             }
         }
 		else if(ae.getSource() == close){
-			PayOpt po = new PayOpt();
-			this.setVisible(false);
-			po.setVisible(true);
+			int confirm = JOptionPane.showConfirmDialog(this, "Are you sure?\n(By clicking YES your payment will cancel)", "Confirmation", JOptionPane.YES_NO_OPTION);
+
+			if(confirm == JOptionPane.YES_OPTION){
+				JOptionPane.showMessageDialog(this, "Order place failed due to payment cancellation!", "Payment Failed", JOptionPane.ERROR_MESSAGE);
+
+				this.setVisible(false);
+				
+				if(redirect == 1){
+					cataccessories cat = new cataccessories();
+					cat.setVisible(true);
+				}
+				else if(redirect == 2){
+					dogaccessories dog = new dogaccessories();
+					dog.setVisible(true);
+				}
+			}
 		 }
 	}
 }

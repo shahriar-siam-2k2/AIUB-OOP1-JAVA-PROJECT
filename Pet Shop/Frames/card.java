@@ -17,11 +17,20 @@ public class card extends JFrame implements MouseListener, ActionListener{
     JComboBox combo;
     ImageIcon img;
 
-    public card()
+    PayOpt po;
+
+    private int redirect;
+
+    public card(int redirect, PayOpt po)
     {
    super("pet shop");
   this.setSize(430,500);
-  this.setLocationRelativeTo(null);
+  this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setLocationRelativeTo(null); //middle point popup
+		this.setResizable(false);
+
+  this.po = po;
+  this.redirect = redirect;
 
   f1=new Font("Calibria ",Font.BOLD,20);
   f2=new Font("Segoe UI",Font.PLAIN,12);
@@ -49,9 +58,9 @@ public class card extends JFrame implements MouseListener, ActionListener{
 
 
 
-  String type[]={"Visa","American Express","Master Card","Pay Pal"};
+  String type[]={"Visa","American Express","Master Card"};
   combo=new JComboBox<>(type);
-  combo.setBounds(8,83,120,23);
+  combo.setBounds(8,83,140,23);
   combo.setBackground(c1);
   panel.add(combo);
 
@@ -96,11 +105,13 @@ public class card extends JFrame implements MouseListener, ActionListener{
   cvvf.setBounds(200,300,130,25);
   panel.add(cvvf);
 
-  back=new JButton("Back");
+  back=new JButton("Cancel");
   back.setBounds(11,400,90,30);
   back.setBackground(c2);
   back.setForeground(Color.WHITE);
   back.setFont(f3);
+  back.setCursor(new Cursor(Cursor.HAND_CURSOR));
+	back.setFocusPainted(false);
   back.addMouseListener(this);
   back.addActionListener(this);
   panel.add(back);
@@ -110,6 +121,8 @@ public class card extends JFrame implements MouseListener, ActionListener{
   next.setBackground(c2);
   next.setForeground(Color.WHITE);
   next.setFont(f3);
+  next.setCursor(new Cursor(Cursor.HAND_CURSOR));
+	next.setFocusPainted(false);
   next.addMouseListener(this);
   next.addActionListener(this);
   panel.add(next);
@@ -117,7 +130,7 @@ public class card extends JFrame implements MouseListener, ActionListener{
 
   img=new ImageIcon("Images/Credit-Card-Icons-2-removebg-preview-2.png");
   imgl=new JLabel(img);
-  imgl.setBounds(145,20,200,150);
+  imgl.setBounds(155,20,200,150);
   panel.add(imgl);
 
 
@@ -157,17 +170,35 @@ public class card extends JFrame implements MouseListener, ActionListener{
         int cvv = password.length;
 
         if(ae.getSource() == next){
-            if(cvv > 3 || cvv < 3){
+            if(cnamef.getText().isEmpty() == true || cnof.getText().isEmpty() == true || expf.getText().isEmpty() == true || cvv == 0){
+              JOptionPane.showMessageDialog(this, "Fillout All Fields!", "Empty Field", JOptionPane.WARNING_MESSAGE);
+            }
+            else if(cvv > 3 || cvv < 3){
               JOptionPane.showMessageDialog(this, "CVV should be 3 digits!", "Invalid CVV", JOptionPane.WARNING_MESSAGE);
             }
             else{
-
+              verifyCard vc = new verifyCard(redirect, this);
+              this.setVisible(false);
+              vc.setVisible(true);
             }
         }
         else if(ae.getSource() == back){
-          PayOpt po = new PayOpt();
-          this.setVisible(false);
-          po.setVisible(true);
+          int confirm = JOptionPane.showConfirmDialog(this, "Are you sure?\n(By clicking YES your payment will cancel)", "Confirmation", JOptionPane.YES_NO_OPTION);
+
+          if(confirm == JOptionPane.YES_OPTION){
+            JOptionPane.showMessageDialog(this, "Order place failed due to payment cancellation!", "Payment Failed", JOptionPane.ERROR_MESSAGE);
+    
+            this.setVisible(false);
+            
+            if(redirect == 1){
+              cataccessories cat = new cataccessories();
+              cat.setVisible(true);
+            }
+            else if(redirect == 2){
+              dogaccessories dog = new dogaccessories();
+              dog.setVisible(true);
+            }
+          }
         }
     }
 }

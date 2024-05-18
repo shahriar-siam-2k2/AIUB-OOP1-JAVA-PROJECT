@@ -21,6 +21,7 @@ public class PetSelect extends JFrame implements MouseListener,ActionListener
 		this.setSize(600,400);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLocationRelativeTo(null);
+		this.setResizable(false);
 		
 		
 		panelCol = new Color(255,242,223);
@@ -37,7 +38,7 @@ public class PetSelect extends JFrame implements MouseListener,ActionListener
 		this.add(panel);
 		
 		Label = new JLabel("SELECT YOUR PET");
-		Label.setBounds(165,30,450,35);
+		Label.setBounds(163,30,450,35);
 		Label.setFont(headFont);
 		panel.add(Label);
 		
@@ -55,6 +56,9 @@ public class PetSelect extends JFrame implements MouseListener,ActionListener
 		catBtn = new JButton(img);
 		catBtn.setBounds(125,100,150,150);
 		catBtn.setBackground(null);
+		catBtn.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        catBtn.setFocusPainted(false);
+		catBtn.setBorderPainted(false);
 		catBtn.addMouseListener(this);
 		catBtn.addActionListener(this);
 		panel.add(catBtn);
@@ -62,35 +66,44 @@ public class PetSelect extends JFrame implements MouseListener,ActionListener
 		dogBtn = new JButton(img1);
 		dogBtn.setBounds(325,100,150,150);
 		dogBtn.setBackground(null);
+		dogBtn.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        dogBtn.setFocusPainted(false);
+		dogBtn.setBorderPainted(false);
 		dogBtn.addMouseListener(this);
 		dogBtn.addActionListener(this);
 		panel.add(dogBtn);
 		
-		catL = new JLabel("Cat");
-		catL.setBounds(188,260,100,25);
+		catL = new JLabel("CAT");
+		catL.setBounds(183,260,100,25);
 		catL.setFont(defFont);
 		panel.add(catL);
 		
-		dogL = new JLabel("Dog");
-		dogL.setBounds(386,260,100,25);
+		dogL = new JLabel("DOG");
+		dogL.setBounds(381,260,100,25);
 		dogL.setFont(defFont);
 		panel.add(dogL);
 		
 		clr = new Color(217,83,79);
 		
 		exit = new JButton("Exit");
-		exit.setBounds(165,310,110,35);
+		exit.setBounds(160,310,110,35);
 		exit.setForeground(Color.WHITE);
 		exit.setBackground(clr);
 		exit.setFont(btnFont);
+		exit.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        exit.setFocusPainted(false);
+		exit.addMouseListener(this);
 		exit.addActionListener(this);
 		panel.add(exit);
 		
 		back = new JButton("Back");
-		back.setBounds(330,310,110,35);
+		back.setBounds(325,310,110,35);
 		back.setForeground(Color.WHITE);
 		back.setBackground(btnCol);
 		back.setFont(btnFont);
+		back.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        back.setFocusPainted(false);
+		back.addMouseListener(this);
 		back.addActionListener(this);
 		panel.add(back);	
 		
@@ -103,13 +116,10 @@ public class PetSelect extends JFrame implements MouseListener,ActionListener
 		if(me.getSource()==catBtn)
 		{
 			catBtn.setBackground(hovCol);
-			catBtn.setForeground(Color.WHITE);
-			
 		}
 		else if(me.getSource()==dogBtn)
 		{
 			dogBtn.setBackground(hovCol);
-			dogBtn.setForeground(Color.WHITE);
 		}
 		else if(me.getSource()==exit)
 		{
@@ -118,13 +128,8 @@ public class PetSelect extends JFrame implements MouseListener,ActionListener
 		}
 		else if(me.getSource()==back)
 		{
-			dogBtn.setBackground(hovCol);
-			dogBtn.setForeground(Color.WHITE);
-		}
-		
-		else
-		{
-			
+			back.setBackground(hovCol);
+			back.setForeground(Color.WHITE);
 		}
 	}
 	
@@ -132,13 +137,11 @@ public class PetSelect extends JFrame implements MouseListener,ActionListener
 	{
 		if(me.getSource()==catBtn)
 		{
-			catBtn.setBackground(btnCol);
-			catBtn.setForeground(Color.WHITE);
+			catBtn.setBackground(null);
 		}
 		else if(me.getSource()==dogBtn)
 		{
-			dogBtn.setBackground(btnCol);
-			dogBtn.setForeground(Color.WHITE);
+			dogBtn.setBackground(null);
 		}
 		else if(me.getSource()==exit)
 		{
@@ -147,15 +150,9 @@ public class PetSelect extends JFrame implements MouseListener,ActionListener
 		}
 		else if(me.getSource()==back)
 		{
-			dogBtn.setBackground(btnCol);
-			dogBtn.setForeground(Color.WHITE);
-		}
-		
-		else
-		{
-			
-		}
-		
+			back.setBackground(btnCol);
+			back.setForeground(Color.WHITE);
+		}		
 	}
 	
 	public void actionPerformed(ActionEvent ae){

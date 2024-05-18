@@ -18,6 +18,7 @@ public class CatProduct1 extends JFrame implements MouseListener, ActionListener
 	private double price = 400;
 	private String product = "Cat Body Belt";
 	private double updatePrice;
+	private int redirect = 1; // Cat = 1, Dog = 2
 
 	public CatProduct1(){
 		
@@ -87,7 +88,7 @@ public class CatProduct1 extends JFrame implements MouseListener, ActionListener
 		
 		//Picture
 		
-		img=new ImageIcon("Images/catproduct01.jpg");
+		img=new ImageIcon("Images/Big/catproduct01.jpg");
 		imglabel=new JLabel(img);
 		imglabel.setBounds(22,80,400,400);
 		panel.add(imglabel);
@@ -181,6 +182,10 @@ public class CatProduct1 extends JFrame implements MouseListener, ActionListener
 				updatePrice = price * quantity;
 				update.setText(" X " + quantity + " = " + updatePrice + " BDT");
 			}
+			else if(quantity == 5){
+				updatePrice = price * quantity;
+				update.setText(" X " + quantity + " = " + updatePrice + " BDT");
+			}
 		}
 		else if(ae.getSource() == buybt){
 			int index = combo.getSelectedIndex();
@@ -189,6 +194,7 @@ public class CatProduct1 extends JFrame implements MouseListener, ActionListener
 			}
 			else{
 				PayOpt po = new PayOpt();
+				po.setPriceCp1(updatePrice, redirect, this);
 				this.setVisible(false);
 				po.setVisible(true);
 			}

@@ -14,9 +14,10 @@ public class CatProduct6 extends JFrame implements MouseListener,ActionListener{
 	Color panelCol,btnCol,btnHoverCol;
 	Font headFont,defFont,fieldFont,btnFont;
 	
-	private double price = 400;
+	private double price = 800;
 	private String product = "Cat Sunflower E Collar";
 	private double updatePrice;
+	private int redirect = 1; // Cat = 1, Dog = 2
 
 	public CatProduct6(){
 		
@@ -85,7 +86,7 @@ public class CatProduct6 extends JFrame implements MouseListener,ActionListener{
 		
 		//Picture
 		
-		img=new ImageIcon("Images/CatECollarSunflower.jpg");
+		img=new ImageIcon("Images/Big/CatECollarSunflower.jpg");
 		imglabel=new JLabel(img);
 		imglabel.setBounds(22,80,400,400);
 		panel.add(imglabel);
@@ -179,6 +180,10 @@ public class CatProduct6 extends JFrame implements MouseListener,ActionListener{
 				updatePrice = price * quantity;
 				update.setText(" X " + quantity + " = " + updatePrice + " BDT");
 			}
+			else if(quantity == 5){
+				updatePrice = price * quantity;
+				update.setText(" X " + quantity + " = " + updatePrice + " BDT");
+			}
 		}
 		else if(ae.getSource() == buybt){
 			int index = combo.getSelectedIndex();
@@ -186,9 +191,10 @@ public class CatProduct6 extends JFrame implements MouseListener,ActionListener{
 				JOptionPane.showMessageDialog(this, "Please select quantity", "WARNING!", JOptionPane.WARNING_MESSAGE);
 			}
 			else{
-				Bkash bk = new Bkash();
+				PayOpt po = new PayOpt();
+				po.setPriceCp6(updatePrice, redirect, this);
 				this.setVisible(false);
-				bk.setVisible(true);
+				po.setVisible(true);
 			}
 		}
 		else if(ae.getSource() == backbt){

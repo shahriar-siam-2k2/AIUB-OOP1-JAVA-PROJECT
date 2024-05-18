@@ -9,18 +9,29 @@ public class BkashVerification extends JFrame implements MouseListener, ActionLi
 	JPanel panel;
 	ImageIcon logo,pinkpic,shoplogo;
 	JLabel logolabel,logoshop;
-	JButton closeBt,confirmBt;
+	JButton closeBt,confirmBt, resendBtn;
 	JLabel enterV,resendC,marchant,bdt,call;
 	JTextField number;
 	Color panelCol,btnCol,btnHoverCol;
 	Font headFont,defFont,fieldFont,btnFont;
+
+	Bkash bk;
+
+	private double price;
+	private int redirect;
+	private String num;
 	
-	public BkashVerification(){
+	public BkashVerification(double price, int redirect, String num, Bkash bk){
 		super("Bkash - Verify");
 		this.setSize(500,625);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLocationRelativeTo(null); //middle point popup
 		this.setResizable(false);
+
+		this.bk = bk;
+		this.redirect = redirect;
+		this.price = price;
+		this.num = num;
 		
 		panelCol = new Color(255,242,223);
 		btnCol = new Color(61,35,20);
@@ -69,39 +80,49 @@ public class BkashVerification extends JFrame implements MouseListener, ActionLi
 		panel.add(number);
 		
 		marchant=new JLabel("Pet Shop Merchant");
-		marchant.setBounds(60,145,400,30);
+		marchant.setBounds(60,155,400,30);
 		marchant.setFont(new Font("Segoe UI",Font.PLAIN,14));
 		panel.add(marchant);
 		
-		bdt=new JLabel("BDT 1085");
-		bdt.setBounds(370,145,200,50);
+		bdt=new JLabel();
+		bdt.setText("BDT " + price);
+		bdt.setBounds(342,145,150,50);
 		bdt.setFont(new Font("Segoe UI",Font.PLAIN,22));
 		panel.add(bdt);
 		
-		enterV=new JLabel("Enter verification code sent to +8801*** **** ****");
-		enterV.setBounds(73,290,400,30);
+		enterV=new JLabel();
+		enterV.setText("Enter verification code sent to " + num.substring(0, 3) + "******" + num.substring(9, 11));
+		enterV.setBounds(95,290,400,30);
 		enterV.setFont(fieldFont);
 		enterV.setForeground(Color.WHITE);
 		panel.add(enterV);
 		
-		resendC=new JLabel("Didn't receive code? Resend code");
-		resendC.setBounds(140,380,450,30);
+		resendC=new JLabel("Didn't receive code?");
+		resendC.setBounds(140,380,132,30);
 		resendC.setFont(new Font("Segoe UI",Font.PLAIN,14));
 		resendC.setForeground(Color.WHITE);
 		panel.add(resendC);
+
+		resendBtn = new JButton();
+		resendBtn.setText("Resend code");
+		resendBtn.setBounds(255, 380, 120, 30);
+		resendBtn.setFont(new Font("Segoe UI",Font.BOLD,14));
+		resendBtn.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		resendBtn.setFocusPainted(false);
+		resendBtn.setBackground(null);
+		resendBtn.setForeground(Color.WHITE);
+		resendBtn.setBorderPainted(false);
+		resendBtn.setOpaque(false);
+		resendBtn.addActionListener(this);
+		resendBtn.addMouseListener(this);
+		resendBtn.setContentAreaFilled(false);
+		panel.add(resendBtn);
 		
 		call=new JLabel("CALL  16247");
 		call.setBounds(165,505,300,100);
 		call.setFont(new Font("Segoe UI",Font.BOLD,26));
 		call.setForeground(new Color(226,17,111));
 		panel.add(call);
-		
-		
-		
-		
-		
-		
-		
 		
 		//Picture
 		
@@ -127,7 +148,10 @@ public class BkashVerification extends JFrame implements MouseListener, ActionLi
 		else if(me.getSource()==confirmBt){
 			confirmBt.setBackground(new Color(163,164,166));
 			confirmBt.setForeground(new Color(226,17,111));
-		} 
+		}
+		else if(me.getSource() == resendBtn){
+			resendBtn.setText("<html><u>Resend code</u></html>");
+		}
 	}
 	public void mouseExited(MouseEvent me){if(me.getSource()==closeBt){
 			closeBt.setForeground(new Color(87,87,87));
@@ -137,18 +161,42 @@ public class BkashVerification extends JFrame implements MouseListener, ActionLi
 			confirmBt.setBackground(new Color(210,211,213));
 			confirmBt.setForeground(new Color(87,87,87));
 		}
+		else if(me.getSource() == resendBtn){
+			resendBtn.setText("Resend code");
+		}
 	}
 
 	public void actionPerformed(ActionEvent ae){
 		if(ae.getSource() == confirmBt){
-			Bkashpin b = new Bkashpin();
-			b.setVisible(true);
-			this.setVisible(false);
+			if(number.getText().isEmpty() == true){
+				JOptionPane.showMessageDialog(this, "Enter verification code.", "Empty Field", JOptionPane.WARNING_MESSAGE);
+			}
+			else {
+				Bkashpin b = new Bkashpin(price, redirect, this);
+				b.setVisible(true);
+				this.setVisible(false);
+			}
 		}
 		else if(ae.getSource() == closeBt){
-			PayOpt po = new PayOpt();
-			this.setVisible(false);
-			po.setVisible(true);
+			int confirm = JOptionPane.showConfirmDialog(this, "Are you sure?\n(By clicking YES your payment will cancel)", "Confirmation", JOptionPane.YES_NO_OPTION);
+
+			if(confirm == JOptionPane.YES_OPTION){
+				JOptionPane.showMessageDialog(this, "Order place failed due to payment cancellation!", "Payment Failed", JOptionPane.ERROR_MESSAGE);
+
+				this.setVisible(false);
+				
+				if(redirect == 1){
+					cataccessories cat = new cataccessories();
+					cat.setVisible(true);
+				}
+				else if(redirect == 2){
+					dogaccessories dog = new dogaccessories();
+					dog.setVisible(true);
+				}
+			}
+		}
+		else if(ae.getSource() == resendBtn){
+			JOptionPane.showMessageDialog(this, "Code sent!", "Code Sent", JOptionPane.INFORMATION_MESSAGE);
 		}
 	}
 }
