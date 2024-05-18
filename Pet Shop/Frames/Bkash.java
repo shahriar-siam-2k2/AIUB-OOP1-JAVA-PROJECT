@@ -24,7 +24,7 @@ public class Bkash extends JFrame implements MouseListener, ActionListener{
 	private int redirect;
 	
 	public Bkash(double price, int redirect, PayOpt po){
-		super("Bkash");
+		super("Bkash Payment");
 		this.setSize(500,625);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLocationRelativeTo(null); //middle point popup
@@ -151,6 +151,9 @@ public class Bkash extends JFrame implements MouseListener, ActionListener{
 
 			if(num.length() == 0){
 				JOptionPane.showMessageDialog(this, "Enter mobile number.", "Empty Field", JOptionPane.WARNING_MESSAGE);
+			}
+			else if (!num.matches("\\d+")) {
+				JOptionPane.showMessageDialog(this, "Phone number should contain only numbers!", "Invalid Input", JOptionPane.WARNING_MESSAGE);
 			}
 			else if(num.length() < 11 || num.length() > 11){
 				JOptionPane.showMessageDialog(this, "Phone number should be 11 digits!", "Invalid Phone Number", JOptionPane.WARNING_MESSAGE);

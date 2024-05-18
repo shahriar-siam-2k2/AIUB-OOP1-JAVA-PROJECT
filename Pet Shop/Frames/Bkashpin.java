@@ -21,7 +21,7 @@ public class Bkashpin extends JFrame implements MouseListener, ActionListener{
 	private int redirect;
 	
 	public Bkashpin(double price, int redirect, BkashVerification bkVer){
-		super("Bkash");
+		super("Bkash Payment");
 		this.setSize(500,625);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLocationRelativeTo(null); //middle point popup
@@ -137,18 +137,23 @@ public class Bkashpin extends JFrame implements MouseListener, ActionListener{
 	}
 
 	public void actionPerformed(ActionEvent ae){
-		char[] ch = pin.getPassword();
-        int len = ch.length;
+		String num = pin.getText();
+        int len = num.length();
 
         if(ae.getSource() == confirm){
 			if(len == 0){
 				JOptionPane.showMessageDialog(this, "Enter PIN.", "Empty Field", JOptionPane.WARNING_MESSAGE);
+			}
+			else if (!num.matches("\\d+")) {
+				JOptionPane.showMessageDialog(this, "PIN should contain only numbers!", "Invalid Input", JOptionPane.WARNING_MESSAGE);
 			}
             else if(len > 5 || len < 5){
               	JOptionPane.showMessageDialog(this, "Bkash PIN should be 5 digits!", "Invalid PIN", JOptionPane.WARNING_MESSAGE);
             }
             else{
 				JOptionPane.showMessageDialog(this, "Payment successful. Your order is placed!", "Successful", JOptionPane.INFORMATION_MESSAGE);
+
+				this.setVisible(false);
 					
 				if(redirect == 1){
 					cataccessories cat = new cataccessories();

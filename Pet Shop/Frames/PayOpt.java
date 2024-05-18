@@ -69,6 +69,9 @@ public class PayOpt extends JFrame implements MouseListener,ActionListener
 		card = new JButton(img);
 		card.setBounds(90,100,120,113);
 		card.setBackground(null);
+		card.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        card.setFocusPainted(false);
+		card.setBorderPainted(false);
 		card.addMouseListener(this);
 		card.addActionListener(this);
 		panel.add(card);
@@ -76,6 +79,9 @@ public class PayOpt extends JFrame implements MouseListener,ActionListener
 		bkash = new JButton(img1);
 		bkash.setBounds(237,100,120,113);
 		bkash.setBackground(null);
+		bkash.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        bkash.setFocusPainted(false);
+		bkash.setBorderPainted(false);
 		bkash.addMouseListener(this);
 		bkash.addActionListener(this);
 		panel.add(bkash);
@@ -83,6 +89,9 @@ public class PayOpt extends JFrame implements MouseListener,ActionListener
 		nagad = new JButton(img2);
 		nagad.setBounds(380,100,120,113);
 		nagad.setBackground(null);
+		nagad.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        nagad.setFocusPainted(false);
+		nagad.setBorderPainted(false);
 		nagad.addMouseListener(this);
 		nagad.addActionListener(this);
 		panel.add(nagad);
@@ -109,6 +118,8 @@ public class PayOpt extends JFrame implements MouseListener,ActionListener
 		exit.setForeground(Color.WHITE);
 		exit.setBackground(clr);
 		exit.setFont(btnFont);
+		exit.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        exit.setFocusPainted(false);
 		exit.addMouseListener(this);
 		exit.addActionListener(this);
 		panel.add(exit);
@@ -118,6 +129,8 @@ public class PayOpt extends JFrame implements MouseListener,ActionListener
 		back.setForeground(Color.WHITE);
 		back.setBackground(btnCol);
 		back.setFont(btnFont);
+		back.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        back.setFocusPainted(false);
 		back.addMouseListener(this);
 		back.addActionListener(this);
 		panel.add(back);	
@@ -205,6 +218,15 @@ public class PayOpt extends JFrame implements MouseListener,ActionListener
 			back.setBackground(hovCol);
 			back.setForeground(Color.WHITE);
 		}
+		else if(me.getSource() == card){
+			card.setBorderPainted(true);
+		}
+		else if(me.getSource() == bkash){
+			bkash.setBorderPainted(true);
+		}
+		else if(me.getSource() == nagad){
+			nagad.setBorderPainted(true);
+		}
 	}
 	public void mouseExited(MouseEvent me)
 	{
@@ -218,6 +240,15 @@ public class PayOpt extends JFrame implements MouseListener,ActionListener
 		{
 			back.setBackground(btnCol);
 			back.setForeground(Color.WHITE);
+		}
+		else if(me.getSource() == card){
+			card.setBorderPainted(false);
+		}
+		else if(me.getSource() == bkash){
+			bkash.setBorderPainted(false);
+		}
+		else if(me.getSource() == nagad){
+			nagad.setBorderPainted(false);
 		}
 	}
 		
@@ -249,9 +280,9 @@ public class PayOpt extends JFrame implements MouseListener,ActionListener
 			this.setVisible(false);
 		}
 		else if(ae.getSource() == nagad){
-			JOptionPane.showMessageDialog(this, "Not available right now", "Not Available", JOptionPane.INFORMATION_MESSAGE);
+			Nagad n = new Nagad(price, redirect, this);
+			n.setVisible(true);
+			this.setVisible(false);
 		}
 	}
 }
-	
-	

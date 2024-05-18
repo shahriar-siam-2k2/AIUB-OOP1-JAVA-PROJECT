@@ -23,7 +23,7 @@ public class card extends JFrame implements MouseListener, ActionListener{
 
     public card(int redirect, PayOpt po)
     {
-   super("pet shop");
+   super("Card Payment");
   this.setSize(430,500);
   this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLocationRelativeTo(null); //middle point popup
@@ -166,14 +166,20 @@ public class card extends JFrame implements MouseListener, ActionListener{
     public void mouseReleased(MouseEvent e) {}
     
     public void actionPerformed(ActionEvent ae){
-        char[] password = cvvf.getPassword();
-        int cvv = password.length;
+        String cvv = cvvf.getText();
+        int len = cvv.length();
 
         if(ae.getSource() == next){
-            if(cnamef.getText().isEmpty() == true || cnof.getText().isEmpty() == true || expf.getText().isEmpty() == true || cvv == 0){
+            if(cnamef.getText().isEmpty() == true || cnof.getText().isEmpty() == true || expf.getText().isEmpty() == true || len == 0){
               JOptionPane.showMessageDialog(this, "Fillout All Fields!", "Empty Field", JOptionPane.WARNING_MESSAGE);
             }
-            else if(cvv > 3 || cvv < 3){
+            else if (!cnof.getText().matches("\\d+")) {
+              JOptionPane.showMessageDialog(this, "Card number should contain only numbers!", "Invalid Input", JOptionPane.WARNING_MESSAGE);
+            }
+            else if (!cvv.matches("\\d+")) {
+              JOptionPane.showMessageDialog(this, "CVV should contain only numbers!", "Invalid Input", JOptionPane.WARNING_MESSAGE);
+            }
+            else if(len > 3 || len < 3){
               JOptionPane.showMessageDialog(this, "CVV should be 3 digits!", "Invalid CVV", JOptionPane.WARNING_MESSAGE);
             }
             else{

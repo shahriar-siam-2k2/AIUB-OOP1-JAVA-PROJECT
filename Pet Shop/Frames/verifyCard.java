@@ -21,7 +21,7 @@ public class verifyCard extends JFrame implements MouseListener, ActionListener 
 
     public verifyCard(int redirect, card c)
     {
-      super("Card Verification");
+      super("Card Payment");
       this.setSize(400,400);
       this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLocationRelativeTo(null); //middle point popup
@@ -145,6 +145,9 @@ public class verifyCard extends JFrame implements MouseListener, ActionListener 
       if(ae.getSource() == pay){
          if(codef.getText().isEmpty() == true){
             JOptionPane.showMessageDialog(this, "Enter verification code.", "Empty Field", JOptionPane.WARNING_MESSAGE);
+         }
+         else if (!codef.getText().matches("\\d+")) {
+            JOptionPane.showMessageDialog(this, "Verification code should contain only numbers!", "Invalid Input", JOptionPane.WARNING_MESSAGE);
          }
          else{
             JOptionPane.showMessageDialog(this, "Payment successful. Your order is placed!", "Successful", JOptionPane.INFORMATION_MESSAGE);

@@ -22,7 +22,7 @@ public class BkashVerification extends JFrame implements MouseListener, ActionLi
 	private String num;
 	
 	public BkashVerification(double price, int redirect, String num, Bkash bk){
-		super("Bkash - Verify");
+		super("Bkash Payment");
 		this.setSize(500,625);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLocationRelativeTo(null); //middle point popup
@@ -171,6 +171,9 @@ public class BkashVerification extends JFrame implements MouseListener, ActionLi
 			if(number.getText().isEmpty() == true){
 				JOptionPane.showMessageDialog(this, "Enter verification code.", "Empty Field", JOptionPane.WARNING_MESSAGE);
 			}
+			else if (!number.getText().matches("\\d+")) {
+				JOptionPane.showMessageDialog(this, "Verification code should contain only numbers!", "Invalid Input", JOptionPane.WARNING_MESSAGE);
+			}
 			else {
 				Bkashpin b = new Bkashpin(price, redirect, this);
 				b.setVisible(true);
@@ -196,7 +199,7 @@ public class BkashVerification extends JFrame implements MouseListener, ActionLi
 			}
 		}
 		else if(ae.getSource() == resendBtn){
-			JOptionPane.showMessageDialog(this, "Code sent!", "Code Sent", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(this, "Code Sent!", "Code Sent", JOptionPane.INFORMATION_MESSAGE);
 		}
 	}
 }
