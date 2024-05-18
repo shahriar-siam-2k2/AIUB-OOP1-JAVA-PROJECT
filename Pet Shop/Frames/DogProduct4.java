@@ -14,7 +14,7 @@ public class DogProduct4 extends JFrame implements MouseListener, ActionListener
 	Color panelCol,btnCol,btnHoverCol;
 	Font headFont,defFont,fieldFont,btnFont;
 	
-	private double price = 1400;
+	private double price = 900;
 	private String product = "Dog Bag";
 	private double updatePrice;
 	private int redirect = 2; // Cat = 1, Dog = 2
@@ -86,7 +86,7 @@ public class DogProduct4 extends JFrame implements MouseListener, ActionListener
 		
 		//Picture
 		
-		img=new ImageIcon("Images/dogbag.jpg");
+		img=new ImageIcon("Images/Big/dogbag.jpg");
 		imglabel=new JLabel(img);
 		imglabel.setBounds(22,80,400,400);
 		panel.add(imglabel);

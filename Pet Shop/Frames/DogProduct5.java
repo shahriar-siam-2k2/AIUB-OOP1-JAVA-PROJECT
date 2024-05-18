@@ -14,7 +14,7 @@ public class DogProduct5 extends JFrame implements MouseListener, ActionListener
 	Color panelCol,btnCol,btnHoverCol;
 	Font headFont,defFont,fieldFont,btnFont;
 	
-	private double price = 400;
+	private double price = 700;
 	private String product = "Pedigree Dog Food";
 	private double updatePrice;
 	private int redirect = 2; // Cat = 1, Dog = 2
@@ -86,7 +86,7 @@ public class DogProduct5 extends JFrame implements MouseListener, ActionListener
 		
 		//Picture
 		
-		img=new ImageIcon("Images/pedigreedogfood.jpg");
+		img=new ImageIcon("Images/Big/pedigreedogfood.jpg");
 		imglabel=new JLabel(img);
 		imglabel.setBounds(22,80,400,400);
 		panel.add(imglabel);

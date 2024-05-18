@@ -86,7 +86,7 @@ public class DogProduct2 extends JFrame implements MouseListener, ActionListener
 		
 		//Picture
 		
-		img=new ImageIcon("Images/dogtoy.jpg");
+		img=new ImageIcon("Images/Big/dogtoy.jpg");
 		imglabel=new JLabel(img);
 		imglabel.setBounds(22,80,400,400);
 		panel.add(imglabel);

@@ -27,6 +27,7 @@ public class DogProduct1 extends JFrame implements MouseListener,ActionListener{
 		this.setLocationRelativeTo(null);
 		this.setResizable(false);
 		
+		
 		panelCol = new Color(255,242,223);
 		btnCol = new Color(61,35,20);
 		btnHoverCol = new Color(241,146,26);
@@ -85,7 +86,7 @@ public class DogProduct1 extends JFrame implements MouseListener,ActionListener{
 		
 		//Picture
 		
-		img=new ImageIcon("Images/dogbodybelt.jpg");
+		img=new ImageIcon("Images/Big/dogbodybelt.jpg");
 		imglabel=new JLabel(img);
 		imglabel.setBounds(22,80,400,400);
 		panel.add(imglabel);

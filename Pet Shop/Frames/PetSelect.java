@@ -9,7 +9,7 @@ import java.awt.event.*;
 public class PetSelect extends JFrame implements MouseListener,ActionListener
 {
 	JPanel panel;
-	JLabel Label,catL,dogL,imgL;
+	JLabel Label,catL,dogL;
 	ImageIcon img,img1;
 	JButton catBtn,dogBtn,exit,back;
 	Color panelCol,btnCol,hovCol,clr;
@@ -43,15 +43,8 @@ public class PetSelect extends JFrame implements MouseListener,ActionListener
 		panel.add(Label);
 		
 		
-		img = new ImageIcon("Images/PS.png");
-		imgL = new JLabel(img);
-		imgL.setBounds(125,100,150,150);
-		panel.add(imgL);
-		
+		img = new ImageIcon("Images/PS.png");	
 		img1 = new ImageIcon("Images/PSPIC1.png");
-		imgL = new JLabel(img1);
-		imgL.setBounds(325,100,150,150);
-		panel.add(imgL);
 		
 		catBtn = new JButton(img);
 		catBtn.setBounds(125,100,150,150);
@@ -163,8 +156,8 @@ public class PetSelect extends JFrame implements MouseListener,ActionListener
 		}
 		else if(ae.getSource()==dogBtn){
 			dogaccessories A2=new dogaccessories();
-			A2.setVisible(true);
 			this.setVisible(false);
+			A2.setVisible(true);
 		}
 		else if(ae.getSource()==exit){
 			this.setVisible(false);

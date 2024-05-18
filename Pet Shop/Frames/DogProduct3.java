@@ -14,7 +14,7 @@ public class DogProduct3 extends JFrame implements MouseListener, ActionListener
 	Color panelCol,btnCol,btnHoverCol;
 	Font headFont,defFont,fieldFont,btnFont;
 	
-	private double price = 400;
+	private double price = 280;
 	private String product = "Dog Neck Collar/Belt";
 	private double updatePrice;
 	private int redirect = 2; // Cat = 1, Dog = 2
@@ -86,7 +86,7 @@ public class DogProduct3 extends JFrame implements MouseListener, ActionListener
 		
 		//Picture
 		
-		img=new ImageIcon("Images/dogneckbelt.jpg");
+		img=new ImageIcon("Images/Big/dogneckbelt.jpg");
 		imglabel=new JLabel(img);
 		imglabel.setBounds(22,80,400,400);
 		panel.add(imglabel);
