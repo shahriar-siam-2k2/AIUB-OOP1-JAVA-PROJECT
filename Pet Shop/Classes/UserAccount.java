@@ -27,7 +27,7 @@ public class UserAccount {
         this.ques = ques;
         this.ans = ans;
     }
-
+    
     public void addAccount(){
         try{
             File file = new File(".\\Datas\\User Data.txt");
@@ -59,7 +59,7 @@ public class UserAccount {
             showMessageDialog(null, "Something went wrong!", "ERROR!", ERROR_MESSAGE);
         }
     }
-
+    
     public void deleteAccount(String userRemove){
         String file = ".\\Datas\\User Data.txt";
         String temp = ".\\Datas\\temp.txt";
@@ -138,7 +138,8 @@ public class UserAccount {
         File trash = new File(file);
         newFile.renameTo(trash);
     }
-    public boolean checkAccount(String name, String pass){
+    
+    public boolean loginCredential(String name, String pass){
         boolean flag = false;
 
         try{
@@ -170,5 +171,116 @@ public class UserAccount {
         }
 
         return flag;
+    }
+
+    public boolean forgotPassCredential(String name, String ques, String ans, String recMethod){
+        boolean flag = false;
+        try {
+            String dataName = "User Name : " + name;
+            String dataQues = "Security Question : " + ques;
+            String dataAns = "Answer : " + ans;
+
+            BufferedReader reader = new BufferedReader(new FileReader(".\\Datas\\User Data.txt"));
+
+            int line = 0;
+            while (reader.readLine() != null){
+                line++;
+            }
+            reader.close();
+
+            for (int i = 0; i <= line; i++) {
+                String data1 = Files.readAllLines(Paths.get(".\\Datas\\User Data.txt")).get(i);
+
+                if (data1.equals(dataName)) {
+                    String data2 = Files.readAllLines(Paths.get(".\\Datas\\User Data.txt")).get((i + 4));
+
+                    if (data2.equals(dataQues)) {
+                        String data3 = Files.readAllLines(Paths.get(".\\Datas\\User Data.txt")).get((i + 5));
+
+                        if (data3.equals(dataAns)) {
+                            flag = true;
+                            break;
+                        }
+                    }
+                }
+            }
+
+        } catch (Exception ex) {
+            showMessageDialog(null, "Your given information mismatched to our server","Error", ERROR_MESSAGE);
+        }
+
+        return flag;
+    }
+
+    public void changePass(String forgotUser, String pass){
+        String file = ".\\Datas\\User Data.txt";
+        String temp = ".\\Datas\\temp.txt";
+
+        File oldFile = new File(file);
+        File newFile = new File(temp);
+
+        int targetLine = 0;
+
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(file));
+            
+            int line = 0;
+            while (reader.readLine() != null){
+                line++;
+            }
+            reader.close();
+
+            for (int i = 0; i < line; i++) {
+                String data = Files.readAllLines(Paths.get(file)).get(i);
+                String user = data.substring(0, 4);
+                if (user.equals("User")) {
+                    String userName = Files.readAllLines(Paths.get(file)).get(i);
+                    if (userName.substring(12).equals(forgotUser)) {
+                        targetLine = i + 1;
+                    }
+                }
+            }
+        } 
+        catch (Exception ex) {
+            showMessageDialog(null, "Something went wrong!", "ERROR!", ERROR_MESSAGE);
+        }
+
+        try {
+            String tempfile = ".\\Datas\\temp.txt";
+            int line = 0;
+            String currentline;
+
+            FileWriter fw = new FileWriter(tempfile, true);
+            BufferedWriter bw = new BufferedWriter(fw);
+            PrintWriter pw = new PrintWriter(bw);
+
+            FileReader fr = new FileReader(".\\Datas\\User Data.txt");
+            BufferedReader br = new BufferedReader(fr);
+
+            int n = targetLine + 1;
+            while ((currentline = br.readLine()) != null) {
+                line++;
+                if (n != line) {
+                    pw.println(currentline);
+                } else {
+                    pw.println("Password : " + pass);
+                }
+            }
+            pw.flush();
+            pw.close();
+            fr.close();
+            br.close();
+            bw.close();
+            fw.close();
+
+            showMessageDialog(null, "Password changed successfully", "Password Changed", INFORMATION_MESSAGE);
+        }
+        catch (Exception ex) {
+            showMessageDialog(null, "Something went wrong!", "ERROR!", ERROR_MESSAGE);
+        }
+
+        oldFile.delete();
+        File trash = new File(file);
+        newFile.renameTo(trash);
     }
 }

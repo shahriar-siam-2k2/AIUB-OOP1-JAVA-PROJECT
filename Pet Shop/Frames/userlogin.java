@@ -10,11 +10,11 @@ import java.awt.event.*;
 
 public class userlogin extends JFrame implements MouseListener, ActionListener{
 
-    JLabel name,pass,wel,imglable,forgotPasswordLabel;
+    JLabel name,pass,wel,imglable;
     JPanel panel;
     JTextField namef;
     JPasswordField passf;
-    JButton back,exit,login, eyeClose, eyeOpen;
+    JButton back,exit,login, eyeClose, eyeOpen, forgotPasswordBtn;
     Font f1,bf,fieldFont;
     Color c1,c2,c3;
     ImageIcon img;
@@ -121,24 +121,37 @@ public class userlogin extends JFrame implements MouseListener, ActionListener{
         panel.add(eyeOpen);
 
         c=new JCheckBox("Remember me");
-        c.setBounds(200,450,110,30);
+        c.setBounds(122 ,430,127,30);
+        c.setFont(new Font("Segoe UI",Font.PLAIN,14));
         c.setBackground(c1);
+        c.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        c.setFocusPainted(false);
+        c.setBorderPainted(false);
         panel.add(c);
+
+        forgotPasswordBtn=new JButton();
+        forgotPasswordBtn.setText("Forgot Password?");
+		forgotPasswordBtn.setBounds(315,430,145,30);
+		forgotPasswordBtn.setFont(new Font("Segoe UI",Font.PLAIN,14));
+		forgotPasswordBtn.setForeground(c3);
+        forgotPasswordBtn.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		forgotPasswordBtn.setBackground(null);
+        forgotPasswordBtn.setFocusPainted(false);
+        forgotPasswordBtn.setBorderPainted(false);
+		forgotPasswordBtn.setBackground(null);
+        forgotPasswordBtn.setContentAreaFilled(false);
+        forgotPasswordBtn.addActionListener(this);
+        forgotPasswordBtn.addMouseListener(this);
+		panel.add(forgotPasswordBtn);
 
         img=new ImageIcon("Images/petshoplogo.jpg");
         imglable=new JLabel(img);
-        imglable.setBounds(100,55,450,300);
+        imglable.setBounds(70,55,450,300);
         panel.add(imglable);
 
     }
    
-    public void mouseClicked(MouseEvent e) {
-
-        if(e.getSource()==forgotPasswordLabel)
-        {
-            JOptionPane.showConfirmDialog(this,"Do you want to recover Password ?","User login of Pet Shop",JOptionPane.YES_NO_OPTION);
-        }
-    }
+    public void mouseClicked(MouseEvent e) {}
     
     public void mouseEntered(MouseEvent e) {
 
@@ -155,12 +168,18 @@ public class userlogin extends JFrame implements MouseListener, ActionListener{
         {
             login.setBackground(c3);
         }
+        else if(e.getSource() == forgotPasswordBtn){
+			forgotPasswordBtn.setText("<html><u>Forgot Password?</u></html>");
+            forgotPasswordBtn.setForeground(c2);
+		}
     }
    
     public void mouseExited(MouseEvent e) {
         back.setBackground(c2);
         exit.setBackground(c2);
         login.setBackground(c2);
+        forgotPasswordBtn.setText("Forgot Password?");
+        forgotPasswordBtn.setForeground(c3);
     }
    
     public void mousePressed(MouseEvent e) {}
@@ -178,7 +197,7 @@ public class userlogin extends JFrame implements MouseListener, ActionListener{
 			}
             else{
                 UserAccount adAcc = new UserAccount();
-                if(adAcc.checkAccount(t1, t2) == true){
+                if(adAcc.loginCredential(t1, t2) == true){
                     JOptionPane.showMessageDialog(this, "Login Successful, press OK", "WELCOME", JOptionPane.INFORMATION_MESSAGE);
                     
                     PetSelect pet = new PetSelect();
@@ -186,6 +205,11 @@ public class userlogin extends JFrame implements MouseListener, ActionListener{
                     this.setVisible(false);
                 }
             }
+        }
+        else if(ae.getSource()==forgotPasswordBtn){
+            ForgotPass fpass = new ForgotPass();
+            this.setVisible(false);
+            fpass.setVisible(true);
         }
         if(ae.getSource() == back){
             GetStarted gs = new GetStarted();
