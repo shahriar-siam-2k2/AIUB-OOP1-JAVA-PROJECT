@@ -42,6 +42,9 @@ public class chngAdmin extends JFrame implements MouseListener, ActionListener{
         panel.setBackground(panelCol);
         this.add(panel);
 
+        ImageIcon icon = new ImageIcon(getClass().getResource("/Images/Pet Shop Icon.png"));
+		this.setIconImage(icon.getImage());
+
         wel=new JLabel("Change Admin Name and Password");
         wel.setBounds(50,0,600,80);
         wel.setForeground(btnCol);

@@ -41,6 +41,8 @@ public class adminlogin extends JFrame implements MouseListener, ActionListener{
         panel.setLayout(null);
         panel.setBackground(panelCol);
         
+        ImageIcon icon = new ImageIcon(getClass().getResource("/Images/Pet Shop Icon.png"));
+		this.setIconImage(icon.getImage());
 
         adminlog=new JLabel("ADMIN LOGIN");
         adminlog.setBounds(250,0,350,65);

@@ -11,7 +11,7 @@ public class PetShop extends JFrame implements MouseListener, ActionListener {
 	JPanel panel;
 	JPanel label;
 	JLabel wlc;
-	ImageIcon logo, icon;
+	ImageIcon logo;
 	JLabel logolabel;
 	JButton exit;
 	JButton cont;
@@ -40,7 +40,7 @@ public class PetShop extends JFrame implements MouseListener, ActionListener {
 		panel.setBackground(panelCol);
 		this.add(panel);
 		
-		icon = new ImageIcon(getClass().getResource("/Images/petshoplogo.jpg"));
+		ImageIcon icon = new ImageIcon(getClass().getResource("/Images/Pet Shop Icon.png"));
 		this.setIconImage(icon.getImage());
 		
 		logo=new ImageIcon("Images/petshoplogo.jpg");
@@ -49,7 +49,7 @@ public class PetShop extends JFrame implements MouseListener, ActionListener {
 		panel.add(logolabel);
 		
 		wlc=new JLabel("Welcome to Pet Shop!");
-		wlc.setBounds(335,300,300,30);
+		wlc.setBounds(345,300,300,30);
 		wlc.setFont(defFont);
 		panel.add(wlc);
 		
@@ -127,7 +127,8 @@ public class PetShop extends JFrame implements MouseListener, ActionListener {
 			this.setVisible(false);
 		}
 		else if(ae.getSource() == cont){
-
+			contribution con = new contribution();
+			con.setVisible(true);
 		}
 		else if(ae.getSource() == exit){
 			this.setVisible(false);

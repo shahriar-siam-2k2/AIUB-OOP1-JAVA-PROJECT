@@ -49,6 +49,9 @@ public class UserData extends JFrame implements MouseListener, ActionListener {
 		panel.setBackground(panelCol);
 		this.add(panel);
 
+		ImageIcon icon = new ImageIcon(getClass().getResource("/Images/Pet Shop Icon.png"));
+		this.setIconImage(icon.getImage());
+
         cursor = new Cursor(Cursor.HAND_CURSOR);
 
         headL = new JLabel("USER DATA");

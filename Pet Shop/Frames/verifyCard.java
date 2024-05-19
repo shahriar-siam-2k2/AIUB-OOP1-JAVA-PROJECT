@@ -45,6 +45,9 @@ public class verifyCard extends JFrame implements MouseListener, ActionListener 
       panel.setBackground(pc);
       this.add(panel);
 
+      ImageIcon icon = new ImageIcon(getClass().getResource("/Images/card.png"));
+		this.setIconImage(icon.getImage());
+
       main=new JLabel("Card Verification ");
       main.setForeground(btc);
       main.setBounds(22,1,200,20);

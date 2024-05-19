@@ -36,11 +36,14 @@ public class dogaccessories extends JFrame implements MouseListener, ActionListe
 		panel.setLayout(null);
 		panel.setBackground(panelCol);
 		this.add(panel);
+
+        ImageIcon icon = new ImageIcon(getClass().getResource("/Images/Pet Shop Icon.png"));
+		this.setIconImage(icon.getImage());
 		
 		//Heading part
 		
 		wel=new JLabel("DOG ACCESSORIES");
-        wel.setBounds(330,0,600,95);
+        wel.setBounds(315,0,600,95);
         wel.setForeground(btnCol);
         wel.setFont(headFont);
         panel.add(wel);

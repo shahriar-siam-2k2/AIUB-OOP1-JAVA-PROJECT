@@ -49,6 +49,9 @@ public class recoveryC extends JFrame implements MouseListener, ActionListener {
       panel.setBackground(pc);
       this.add(panel);
 
+      ImageIcon icon = new ImageIcon(getClass().getResource("/Images/Pet Shop Icon.png"));
+		this.setIconImage(icon.getImage());
+
       main=new JLabel("Enter Recovery Code");
       main.setForeground(btc);
       main.setBounds(270,10,500,40);

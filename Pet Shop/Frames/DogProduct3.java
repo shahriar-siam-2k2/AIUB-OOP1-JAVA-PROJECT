@@ -42,6 +42,9 @@ public class DogProduct3 extends JFrame implements MouseListener, ActionListener
 		panel.setLayout(null);
 		panel.setBackground(panelCol);
 		this.add(panel);
+
+		ImageIcon icon = new ImageIcon(getClass().getResource("/Images/Pet Shop Icon.png"));
+		this.setIconImage(icon.getImage());
 		
 		//texts
 		

@@ -42,6 +42,9 @@ public class userlogin extends JFrame implements MouseListener, ActionListener{
         panel.setBackground(c1);
         this.add(panel);
 
+        ImageIcon icon = new ImageIcon(getClass().getResource("/Images/Pet Shop Icon.png"));
+		this.setIconImage(icon.getImage());
+
         wel=new JLabel("User Login");
         wel.setBounds(240,0,600,95);
         wel.setForeground(c3);
@@ -75,6 +78,8 @@ public class userlogin extends JFrame implements MouseListener, ActionListener{
         back.setBackground(c2);
         back.setFont(bf);
         back.setForeground(Color.WHITE);
+        back.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		back.setFocusPainted(false);
         back.addMouseListener(this);
         back.addActionListener(this);
         panel.add(back);
@@ -84,6 +89,8 @@ public class userlogin extends JFrame implements MouseListener, ActionListener{
         exit.setBackground(c2);
         exit.setFont(bf);
         exit.setForeground(Color.WHITE);
+        exit.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		exit.setFocusPainted(false);
         exit.addMouseListener(this);
         exit.addActionListener(this);
         panel.add(exit);
@@ -93,6 +100,8 @@ public class userlogin extends JFrame implements MouseListener, ActionListener{
         login.setBackground(c2);
         login.setFont(bf);
         login.setForeground(Color.WHITE);
+        login.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		login.setFocusPainted(false);
         login.addMouseListener(this);
         login.addActionListener(this);
         panel.add(login);

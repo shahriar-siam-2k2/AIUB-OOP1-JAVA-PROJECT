@@ -42,6 +42,9 @@ public class Nagadpin extends JFrame implements MouseListener, ActionListener{
 		panel.setLayout(null);
 		panel.setBackground(Color.WHITE);
 		this.add(panel);
+
+		ImageIcon icon = new ImageIcon(getClass().getResource("/Images/nagad1.png"));
+		this.setIconImage(icon.getImage());
 		
 		merchant=new JLabel("Pet Shop Merchant");
 		merchant.setBounds(138,100,400,50);

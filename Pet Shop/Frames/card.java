@@ -44,6 +44,9 @@ public class card extends JFrame implements MouseListener, ActionListener{
   panel.setLayout(null);
   this.add(panel);
 
+  ImageIcon icon = new ImageIcon(getClass().getResource("/Images/card.png"));
+		this.setIconImage(icon.getImage());
+
   invo=new JLabel("Invoice");
   invo.setBounds(170,10,90,27);
   invo.setForeground(c2);

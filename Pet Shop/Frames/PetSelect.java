@@ -36,6 +36,9 @@ public class PetSelect extends JFrame implements MouseListener,ActionListener
 		panel.setLayout(null);
 		panel.setBackground(panelCol);
 		this.add(panel);
+
+		ImageIcon icon = new ImageIcon(getClass().getResource("/Images/Pet Shop Icon.png"));
+		this.setIconImage(icon.getImage());
 		
 		Label = new JLabel("SELECT YOUR PET");
 		Label.setBounds(163,30,450,35);
@@ -89,7 +92,7 @@ public class PetSelect extends JFrame implements MouseListener,ActionListener
 		exit.addActionListener(this);
 		panel.add(exit);
 		
-		back = new JButton("Back");
+		back = new JButton("Logout");
 		back.setBounds(325,310,110,35);
 		back.setForeground(Color.WHITE);
 		back.setBackground(btnCol);
