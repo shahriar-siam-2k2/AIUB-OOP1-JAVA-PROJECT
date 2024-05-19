@@ -5,8 +5,7 @@ import java.util.*;
 import java.io.*;
 import java.nio.file.*;
 
-import static javax.swing.JOptionPane.ERROR_MESSAGE;
-import static javax.swing.JOptionPane.showMessageDialog;
+import static javax.swing.JOptionPane.*;
 
 import Frames.*;
 
@@ -20,9 +19,12 @@ public class AdminAccount {
         this.pass = pass;
     }
 
-    public void addAccount(){
+    public void changeAccount(String name, String pass){
+        String adminData = ".\\Datas\\Admin Data.txt";
+        File oldData = new File(adminData);
+        oldData.delete();
         try{
-            File file = new File(".\\Data\\Admin Data.txt");
+            File file = new File(".\\Datas\\Admin Data.txt");
             FileWriter fw = new FileWriter(file, true);
             BufferedWriter bw = new BufferedWriter(fw);
             PrintWriter pw = new PrintWriter(bw);
@@ -38,9 +40,11 @@ public class AdminAccount {
             pw.close();
             bw.close();
             fw.close();
+
+            showMessageDialog(null, "Admin name & password changed successfully!", "Changed", INFORMATION_MESSAGE);
         }
         catch(IOException ioe){
-            ioe.printStackTrace();
+            showMessageDialog(null, "Something went wrong", "ERROR!", ERROR_MESSAGE);
         }
     }
     public boolean checkAccount(){

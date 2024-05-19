@@ -233,10 +233,5 @@ public class ForgotPass extends JFrame implements MouseListener, ActionListener
 				}
 			}
 		}
-		else if(ae.getSource() == backBtn){
-			userlogin log = new userlogin();
-			this.setVisible(false);
-			log.setVisible(true);
-		}
 	}
 }

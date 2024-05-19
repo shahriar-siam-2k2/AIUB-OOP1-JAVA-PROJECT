@@ -11,7 +11,7 @@ public class adminlogin extends JFrame implements MouseListener, ActionListener{
     JLabel adminlog,name,pass,imgLabel;
     JTextField namef;
     JPasswordField passf;
-    JButton exit,login,back;
+    JButton exit,login,back, eyeOpen, eyeClose;
     JPanel panel;
     Color panelCol,btnCol,btnHoverCol, exitCol, loginCol;
     Font headFont, defFont, btnFont, fieldFont;
@@ -41,6 +41,8 @@ public class adminlogin extends JFrame implements MouseListener, ActionListener{
         panel.setLayout(null);
         panel.setBackground(panelCol);
         
+        ImageIcon icon = new ImageIcon(getClass().getResource("/Images/Pet Shop Icon.png"));
+		this.setIconImage(icon.getImage());
 
         adminlog=new JLabel("ADMIN LOGIN");
         adminlog.setBounds(250,0,350,65);
@@ -67,6 +69,29 @@ public class adminlogin extends JFrame implements MouseListener, ActionListener{
         passf.setBounds(100,210,290,30);
         passf.setFont(fieldFont);
         panel.add(passf);
+
+        eyeClose = new JButton();
+        eyeClose.setIcon(new ImageIcon("Images/Eye Close.png"));
+        eyeClose.setBounds(400,215,20,20);
+        eyeClose.setForeground(Color.white);
+        eyeClose.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        eyeClose.setFocusPainted(false);
+        eyeClose.setBorder(BorderFactory.createEmptyBorder(4, 4, 4, 4));
+        eyeClose.setContentAreaFilled(false);
+        eyeClose.addActionListener(this);
+        panel.add(eyeClose);
+
+        eyeOpen = new JButton();
+        eyeOpen.setIcon(new ImageIcon("Images/Eye Open.png"));
+        eyeOpen.setBounds(400,215,20,20);
+        eyeOpen.setForeground(Color.white);
+        eyeOpen.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        eyeOpen.setFocusPainted(false);
+        eyeOpen.setBorder(BorderFactory.createEmptyBorder(4, 4, 4, 4));
+        eyeOpen.setContentAreaFilled(false);
+        eyeOpen.addActionListener(this);
+        eyeOpen.setVisible(false);
+        panel.add(eyeOpen);
 
         exit=new JButton("Exit");
         exit.setBounds(100,280,90,35);
@@ -154,14 +179,11 @@ public class adminlogin extends JFrame implements MouseListener, ActionListener{
             else{
                 AdminAccount adAcc = new AdminAccount(t1, t2);
                 if(adAcc.checkAccount() == true){
-                    JOptionPane.showMessageDialog(this, "Login Successfull, press OK", "WELCOME", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "Login Successful, press OK", "WELCOME", JOptionPane.INFORMATION_MESSAGE);
                     
                     AdminPanel adpan = new AdminPanel();
                     adpan.setVisible(true);
                     this.setVisible(false);
-                }
-                else{
-                    
                 }
             }
         }
@@ -172,6 +194,18 @@ public class adminlogin extends JFrame implements MouseListener, ActionListener{
         }
         else if(ae.getSource() == exit){
             this.setVisible(false);
+        }
+        else if(ae.getSource() == eyeClose){
+            if (passf.getEchoChar() != '\u0000') {
+                passf.setEchoChar('\u0000');
+                eyeClose.setVisible(false);
+                eyeOpen.setVisible(true);
+            }
+        }
+        else if(ae.getSource() == eyeOpen){
+            passf.setEchoChar((Character) UIManager.get("PasswordField.echoChar"));
+            eyeOpen.setVisible(false);
+            eyeClose.setVisible(true);
         }
     }
 }
