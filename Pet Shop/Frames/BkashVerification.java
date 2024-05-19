@@ -46,6 +46,9 @@ public class BkashVerification extends JFrame implements MouseListener, ActionLi
 		panel.setLayout(null);
 		panel.setBackground(Color.WHITE);
 		this.add(panel);
+
+		ImageIcon icon = new ImageIcon(getClass().getResource("/Images/bkash.png"));
+		this.setIconImage(icon.getImage());
 		
 		logo=new ImageIcon("Images/bkashlogo.jpg");
 		logolabel=new JLabel(logo);

@@ -44,6 +44,8 @@ public class AdminUserAdd extends JFrame implements MouseListener, ActionListene
 		panel.setBackground(panelCol);
 		this.add(panel);
 		
+		ImageIcon icon = new ImageIcon(getClass().getResource("/Images/Pet Shop Icon.png"));
+		this.setIconImage(icon.getImage());
 		
 		defL = new JLabel("Enter Information");
 		defL.setBounds(150,20,450,35);
@@ -189,7 +191,9 @@ public class AdminUserAdd extends JFrame implements MouseListener, ActionListene
 			}
         }
         else if(ae.getSource() == backBtn){
+			UserData ud = new UserData();
             this.setVisible(false);
+			ud.setVisible(true);
         }
 	}
 }

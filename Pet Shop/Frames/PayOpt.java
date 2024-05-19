@@ -51,6 +51,9 @@ public class PayOpt extends JFrame implements MouseListener,ActionListener
 		panel.setLayout(null);
 		panel.setBackground(panelCol);
 		this.add(panel);
+
+		ImageIcon icon = new ImageIcon(getClass().getResource("/Images/Pet Shop Icon.png"));
+		this.setIconImage(icon.getImage());
 		
 		Label = new JLabel("SELECT PAYMENT METHOD");
 		Label.setBounds(90,30,450,35);

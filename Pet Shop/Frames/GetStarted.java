@@ -42,14 +42,17 @@ public class GetStarted extends JFrame implements MouseListener, ActionListener
 		Panel = new JPanel();
 		Panel.setLayout(null);
 		Panel.setBackground(panelCol);
+
+		ImageIcon icon = new ImageIcon(getClass().getResource("/Images/Pet Shop Icon.png"));
+		this.setIconImage(icon.getImage());
 		
 		img = new ImageIcon("Images/petshoplogo.jpg");
 		imgLabel = new JLabel(img);
-		imgLabel.setBounds(215,0,450,300);
+		imgLabel.setBounds(220,0,450,300);
 		Panel.add(imgLabel);
 		
 		Label = new JLabel("Get Started");
-		Label.setBounds(390,325,300,30);
+		Label.setBounds(384,325,300,30);
 		Label.setFont(new Font("Segoe UI", Font.BOLD, 25));
 		Panel.add(Label);
 		

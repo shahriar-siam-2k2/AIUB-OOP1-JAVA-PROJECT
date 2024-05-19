@@ -37,6 +37,9 @@ public class AdminPanel extends JFrame implements MouseListener, ActionListener{
 		panel.setLayout(null);
 		panel.setBackground(panelCol);
 		this.add(panel);
+
+		ImageIcon icon = new ImageIcon(getClass().getResource("/Images/Pet Shop Icon.png"));
+		this.setIconImage(icon.getImage());
 		
 		logo=new ImageIcon("Images/adminpanellogo.png");
 		logolabel=new JLabel(logo);
@@ -89,7 +92,7 @@ public class AdminPanel extends JFrame implements MouseListener, ActionListener{
 		exit.setFocusPainted(false);
 		panel.add(exit);
 		
-		back=new JButton("Back");
+		back=new JButton("Admin Logout");
 		back.setBounds(450,420,260,50); //(450,450,260,30);
 		back.setForeground(Color.BLACK);
 		colour=new Color(252, 232, 207);
@@ -121,7 +124,7 @@ public class AdminPanel extends JFrame implements MouseListener, ActionListener{
 			exit.setForeground(Color.WHITE);
 		}
 		else if(me.getSource() == back){
-			back.setBackground(btnCol);
+			back.setBackground(new Color(217,83,79));
 			back.setForeground(Color.WHITE);
 		}
 	}

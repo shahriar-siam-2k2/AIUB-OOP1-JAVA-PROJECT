@@ -36,6 +36,9 @@ public class cataccessories extends JFrame implements MouseListener, ActionListe
 		panel.setLayout(null);
 		panel.setBackground(panelCol);
 		this.add(panel);
+
+        ImageIcon icon = new ImageIcon(getClass().getResource("/Images/Pet Shop Icon.png"));
+		this.setIconImage(icon.getImage());
 		
 		//Heading part
 		

@@ -26,7 +26,7 @@ public class Register extends JFrame implements MouseListener, ActionListener{
 	
 	public Register(){
 		super("Register");
-		this.setSize(600,870);
+		this.setSize(600,800);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLocationRelativeTo(null); //middle point popup
 		this.setResizable(false);
@@ -44,35 +44,38 @@ public class Register extends JFrame implements MouseListener, ActionListener{
 		panel.setLayout(null);
 		panel.setBackground(panelCol);
 		this.add(panel);
+
+		ImageIcon icon = new ImageIcon(getClass().getResource("/Images/Pet Shop Icon.png"));
+		this.setIconImage(icon.getImage());
 		
 		reg=new JLabel("REGISTER");
-		reg.setBounds(200,30,400,50);
+		reg.setBounds(200,0,400,50);
 		reg.setFont(new Font("Segoe UI",Font.BOLD,40));
 		panel.add(reg); //login.setFont(new Font("Arial",Font.BOLD,20));
 		
 		usernm=new JLabel("User Name");
-		usernm.setBounds(100,120,400,30);
+		usernm.setBounds(100,60,400,30);
 		usernm.setFont(defFont);
 		panel.add(usernm); 
 		
 		namef=new JTextField();
-		namef.setBounds(100,150,400,30);
+		namef.setBounds(100,90,400,30);
 		namef.setFont(fieldFont);
 		panel.add(namef);
 		
 		pass=new JLabel("Password");
-		pass.setBounds(100,190,400,30);
+		pass.setBounds(100,130,400,30);
 		pass.setFont(defFont);
 		panel.add(pass);
 		
 		passf=new JPasswordField();
-		passf.setBounds(100,220,400,30);
+		passf.setBounds(100,160,400,30);
 		passf.setFont(fieldFont);
 		panel.add(passf);
 
 		eyeClose = new JButton();
         eyeClose.setIcon(new ImageIcon("Images/Eye Close.png"));
-        eyeClose.setBounds(510,225,20,20);
+        eyeClose.setBounds(510,165,20,20);
         eyeClose.setForeground(Color.white);
         eyeClose.setCursor(new Cursor(Cursor.HAND_CURSOR));
         eyeClose.setFocusPainted(false);
@@ -83,7 +86,7 @@ public class Register extends JFrame implements MouseListener, ActionListener{
 
         eyeOpen = new JButton();
         eyeOpen.setIcon(new ImageIcon("Images/Eye Open.png"));
-        eyeOpen.setBounds(510,225,20,20);
+        eyeOpen.setBounds(510,165,20,20);
         eyeOpen.setForeground(Color.white);
         eyeOpen.setCursor(new Cursor(Cursor.HAND_CURSOR));
         eyeOpen.setFocusPainted(false);
@@ -94,18 +97,18 @@ public class Register extends JFrame implements MouseListener, ActionListener{
         panel.add(eyeOpen);
 		
 		conpass=new JLabel("Confirm Password");
-		conpass.setBounds(100,260,400,30);
+		conpass.setBounds(100,200,400,30);
 		conpass.setFont(defFont);
 		panel.add(conpass);
 		
 		conpassf=new JPasswordField();
-		conpassf.setBounds(100,290,400,30);
+		conpassf.setBounds(100,230,400,30);
 		conpassf.setFont(fieldFont);
 		panel.add(conpassf);
 
 		eyeClose1 = new JButton();
         eyeClose1.setIcon(new ImageIcon("Images/Eye Close.png"));
-        eyeClose1.setBounds(510,295,20,20);
+        eyeClose1.setBounds(510,235,20,20);
         eyeClose1.setForeground(Color.white);
         eyeClose1.setCursor(new Cursor(Cursor.HAND_CURSOR));
         eyeClose1.setFocusPainted(false);
@@ -116,7 +119,7 @@ public class Register extends JFrame implements MouseListener, ActionListener{
 
         eyeOpen1 = new JButton();
         eyeOpen1.setIcon(new ImageIcon("Images/Eye Open.png"));
-        eyeOpen1.setBounds(510,295,20,20);
+        eyeOpen1.setBounds(510,235,20,20);
         eyeOpen1.setForeground(Color.white);
         eyeOpen1.setCursor(new Cursor(Cursor.HAND_CURSOR));
         eyeOpen1.setFocusPainted(false);
@@ -127,48 +130,48 @@ public class Register extends JFrame implements MouseListener, ActionListener{
         panel.add(eyeOpen1);
 		
 		email=new JLabel("Email");
-		email.setBounds(100,330,400,30);
+		email.setBounds(100,270,400,30);
 		email.setFont(defFont);
 		panel.add(email);
 		
 		emailf=new JTextField();
-		emailf.setBounds(100,360,400,30);
+		emailf.setBounds(100,300,400,30);
 		emailf.setFont(fieldFont);
 		panel.add(emailf);
 		
 		phn=new JLabel("Phone Number");
-		phn.setBounds(100,400,400,30);
+		phn.setBounds(100,340,400,30);
 		phn.setFont(defFont);
 		panel.add(phn);
 		
 		phnf=new JTextField();
-		phnf.setBounds(100,430,400,30);
+		phnf.setBounds(100,370,400,30);
 		phnf.setFont(fieldFont);
 		panel.add(phnf);
 		
 		question=new JLabel("Security Question");
-		question.setBounds(100,470,400,30);
+		question.setBounds(100,410,400,30);
 		question.setFont(defFont);
 		panel.add(question);
 		
 		String items[]={"Choose a security question...", "Your hobby?", "Your birth place?", "Your dream job?", "Your favorite car name?"};
 		combo=new JComboBox(items);
-		combo.setBounds(100,500,400,30);
+		combo.setBounds(100,440,400,30);
 		combo.setFont(fieldFont);
 		panel.add(combo);
 		
 		ans=new JLabel("Answer");
-		ans.setBounds(100,540,400,30);
+		ans.setBounds(100,480,400,30);
 		ans.setFont(defFont);
 		panel.add(ans);
 		
 		ansf=new JTextField();
-		ansf.setBounds(100,570,400,30);
+		ansf.setBounds(100,510,400,30);
 		ansf.setFont(fieldFont);
 		panel.add(ansf);
 		
 		captcha=new JLabel("Captcha");
-		captcha.setBounds(100,610,400,30);
+		captcha.setBounds(100,550,400,30);
 		captcha.setFont(defFont);
 		panel.add(captcha);
 		
@@ -178,18 +181,18 @@ public class Register extends JFrame implements MouseListener, ActionListener{
 
 		captchaQuesf=new JLabel();
 		captchaQuesf.setText(" " + a + " + " + b + " ");
-		captchaQuesf.setBounds(100,640,80,30);
+		captchaQuesf.setBounds(100,580,80,30);
 		captchaQuesf.setFont(defFont);
 		captchaQuesf.setBackground(new Color(243, 162, 63));
 		panel.add(captchaQuesf);
 		
 		capchaEqual=new JLabel(" = ");
-		capchaEqual.setBounds(162,638,30,30);
+		capchaEqual.setBounds(162,578,30,30);
 		capchaEqual.setFont(defFont);
 		panel.add(capchaEqual);
 		
 		capchaAnsf=new JTextField();
-		capchaAnsf.setBounds(190,640,270,30);
+		capchaAnsf.setBounds(190,580,270,30);
 		capchaAnsf.setFont(fieldFont);
 		panel.add(capchaAnsf);
 		
@@ -198,7 +201,7 @@ public class Register extends JFrame implements MouseListener, ActionListener{
 		
 		
 		register=new JButton("Register");
-		register.setBounds(190,710,200,30);
+		register.setBounds(190,640,200,30);
 		register.setForeground(Color.WHITE);
 		register.setBackground(new Color(54,185,255));
 		register.setFont(btnFont);
@@ -209,7 +212,7 @@ public class Register extends JFrame implements MouseListener, ActionListener{
 		panel.add(register);
 		
 		back=new JButton("Cancel");
-		back.setBounds(235,770,110,30);
+		back.setBounds(235,700,110,30);
 		back.setForeground(Color.WHITE);
 		back.setBackground(btnCol);
 		back.setFont(btnFont);
@@ -220,7 +223,7 @@ public class Register extends JFrame implements MouseListener, ActionListener{
 		panel.add(back);
 		
 		reset=new JButton("Reset");
-		reset.setBounds(370,770,110,30);
+		reset.setBounds(370,700,110,30);
 		reset.setForeground(Color.WHITE);
 		reset.setBackground(btnCol);
 		reset.setFont(btnFont);
@@ -231,7 +234,7 @@ public class Register extends JFrame implements MouseListener, ActionListener{
 		panel.add(reset);
 		
 		exit=new JButton("Exit");
-		exit.setBounds(100,770,110,30);
+		exit.setBounds(100,700,110,30);
 		exit.setForeground(Color.WHITE);
 		exit.setBackground(new Color(217,83,79));
 		exit.setFont(btnFont);
@@ -326,6 +329,9 @@ public class Register extends JFrame implements MouseListener, ActionListener{
 				}
 				else if(t3.contains("@") == false){
 					JOptionPane.showMessageDialog(this, "Email should have '@' sign", "Invalid Email!", JOptionPane.WARNING_MESSAGE);
+				}
+				else if (!t4.matches("\\d+")) {
+					JOptionPane.showMessageDialog(this, "Phone number should contain only numbers!", "Invalid Input", JOptionPane.WARNING_MESSAGE);
 				}
 				else if(t4.length() < 11 || t4.length() > 11){
 					JOptionPane.showMessageDialog(this, "Phone number should be 11 digits!", "Invalid Phone Number", JOptionPane.WARNING_MESSAGE);
