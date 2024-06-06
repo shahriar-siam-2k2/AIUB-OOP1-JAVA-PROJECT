@@ -178,7 +178,7 @@ public class AdminUserAdd extends JFrame implements MouseListener, ActionListene
 			else if(t3.contains("@") == false){
 				JOptionPane.showMessageDialog(this, "Email should have '@' sign", "Invalid Email!", JOptionPane.WARNING_MESSAGE);
 			}
-			else if(t4.length() < 11 || t3.length() > 11){
+			else if(t4.length() < 11 || t4.length() > 11){
 				JOptionPane.showMessageDialog(this, "Phone number should be 11 digits!", "Invalid Phone Number", JOptionPane.WARNING_MESSAGE);
 			}
 			else{

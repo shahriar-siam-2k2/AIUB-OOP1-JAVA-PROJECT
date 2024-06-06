@@ -66,7 +66,7 @@ public class contribution extends JFrame implements MouseListener, ActionListene
 		imgLabel.setBounds(65,130,150,150);
 		panel.add(imgLabel);
 		
-		name=new JLabel("J.M Shahriar Ali Seam");
+		name=new JLabel("J.M. Shahriar Ali Seam");
 		name.setBounds(65,280,400,30);
 		name.setFont(defFont);
 		panel.add(name);
